@@ -1,67 +1,26 @@
 /*
-	Arcana by HTML5 UP
+	Aerial by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
-/* Form */
+/* Header */
 
-	input[type="text"],
-	input[type="password"],
-	input[type="email"],
-	textarea {
+	#header nav a {
 		position: relative;
+		border: solid 1px #fff;
+		border-radius: 100%;
 		-ms-behavior: url("assets/js/ie/PIE.htc");
 	}
 
-/* Image */
-
-	.image {
-		-ms-behavior: url("assets/js/ie/PIE.htc");
-	}
-
-		.image img {
-			position: relative;
-			-ms-behavior: url("assets/js/ie/PIE.htc");
+		#header nav a:before {
+			border: 0;
 		}
 
-/* Icon */
+/* Footer */
 
-	.icon.major {
-		position: relative;
-		-ms-behavior: url("assets/js/ie/PIE.htc");
-	}
-
-/* Button */
-
-	input[type="submit"],
-	input[type="reset"],
-	input[type="button"],
-	.button {
-		position: relative;
-		-ms-behavior: url("assets/js/ie/PIE.htc");
-	}
-
-/* Box */
-
-	.box.post .inner {
-		margin-left: 35%;
-	}
-
-/* Dropotron */
-
-	.dropotron {
-		-ms-behavior: url("assets/js/ie/PIE.htc");
-	}
-
-/* Banner */
-
-	#banner {
-		-ms-behavior: url("assets/js/ie/backgroundsize.min.htc");
-	}
-
-/* Wrapper */
-
-	.wrapper.style2 {
-		background: #fdfdfd url("images/bg01.png");
+	#footer {
+		background-image: url("images/ie/footer.png");
+		background-position: bottom left;
+		background-repeat: repeat-x;
 	}
