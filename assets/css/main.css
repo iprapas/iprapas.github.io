@@ -187,12 +187,16 @@
 	/* Set your background with this */
 
 		background: #348cb2 url("images/bg.jpg") bottom left;
-		background-repeat: repeat-x;
-		height: 100%;
-		left: 0;
+		/*background-repeat: repeat-x;*/
+        min-height:100%;
+        min-width:100%;
+        height:auto;
+        width:auto;
 		opacity: 1;
-		position: fixed;
-		top: 0;
+	    position:absolute;
+        top:-100%; bottom:-100%;
+        left:-100%; right:-100%;
+        margin:auto;
 	}
 
 	@-moz-keyframes bg {
