@@ -1,0 +1,72 @@
+baseurl = "https://iprapas.github.io/"
+title = "Ioannis Prapas"
+theme = "hugo-coder"
+languagecode = "en"
+defaultcontentlanguage = "en"
+
+paginate = 20
+canonifyurls = true
+
+pygmentsstyle = "bw"
+pygmentscodefences = true
+pygmentscodefencesguesssyntax = true
+
+
+disqusShortname = "iprapas"
+googleAnalytics = "UA-93894885-1"
+
+
+[params]
+    author = "Ioannis Prapas"
+    info = "Big Data, Machine Learning Engineer"
+    description = "Ioannis' Personal Website"
+    keywords = "blog,big data,machine learning,personal"
+    avatarurl = "images/avatar.png"
+
+    favicon_32 = "images/favicon.png"
+    favicon_16 = "images/favicon.png"
+
+    footercontent = "Thanks for passing by"
+
+    hidecredits = false
+    hidecopyright = false
+
+    rtl = false
+
+    math = true
+
+
+# Social links
+[[params.social]]
+    name = "Github"
+    icon = "fab fa-github fa-2x"
+    weight = 1
+    url = "https://github.com/iprapas/"
+
+[[params.social]]
+    name = "Kaggle"
+    icon = "fab fa-kaggle fa-2x"
+    weight = 2
+    url = "https://kaggle.com/iprapas/"
+
+[[params.social]]
+    name = "LinkedIn"
+    icon = "fab fa-linkedin-in fa-2x"
+    weight = 3
+    url = "https://www.linkedin.com/in/iprapas/"
+
+[[params.social]]
+    name = "Mail"
+    icon = "fa fa-envelope fa-2x"
+    weight = 4
+    url = "web/mail.html"
+
+# Menu links
+[[menu.main]]
+    name = "Blog"
+    weight = 1
+    url  = "/posts/"
+[[menu.main]]
+    name = "About"
+    weight = 2
+    url = "/about/"
