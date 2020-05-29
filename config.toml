@@ -11,8 +11,6 @@ pygmentsstyle = "bw"
 pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
 
-
-disqusShortname = "iprapas"
 googleAnalytics = "UA-93894885-1"
 
 
