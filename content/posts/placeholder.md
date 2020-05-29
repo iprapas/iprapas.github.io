@@ -1,5 +1,5 @@
 +++
-date = "2020-05-28"
+date = "2020-05-20"
 draft = false
 title = "Placeholder Article"
 toc = true
@@ -15,5 +15,4 @@ This $x$ variable
 import os
 os.listdir()
 ```
-
 
