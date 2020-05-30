@@ -76,10 +76,22 @@ googleAnalytics = "UA-93894885-1"
 
 # Menu links
 [[menu.main]]
-    name = "Blog"
+    name = "Home"
     weight = 1
+    url  = "/"
+
+[[menu.main]]
+    name = "Blog"
+    weight = 2
     url  = "/posts/"
+
+
+[[menu.main]]
+    name = "Links"
+    weight = 3
+    url  = "/links/"
+
 [[menu.main]]
     name = "About"
-    weight = 2
+    weight = 4
     url = "/about/"
