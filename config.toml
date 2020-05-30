@@ -38,11 +38,6 @@ googleAnalytics = "UA-93894885-1"
   includeNewer = true
   toLower = true
   [[related.indices]]
-    name="categories"
-    weight=100
-    toLower=true
-    includeNewer = true
-  [[related.indices]]
     name="tags"
     weight=10
     toLower=true
