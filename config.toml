@@ -24,7 +24,7 @@ googleAnalytics = "UA-93894885-1"
     favicon_32 = "images/favicon.png"
     favicon_16 = "images/favicon.png"
 
-    footercontent = "Feel free to contact me for anything, unless you are a prince who wants to send me money."
+    footercontent = ""
 
     hidecredits = false
     hidecopyright = false
