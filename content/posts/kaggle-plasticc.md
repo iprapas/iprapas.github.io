@@ -16,7 +16,7 @@ I lacked, however, any practical experience and although I wanted to join kaggle
 
 ## Competition
 
-I found the opportunity to join a competition with the Plasticc chalenge that involved classifying stars based on their light-curves (light curves are the time-series of the observed luminosities of a star).
+I found the opportunity to join a competition with the [Plasticc chalenge](https://www.kaggle.com/c/PLAsTiCC-2018) that involved classifying stars based on their light-curves (light curves are the time-series of the observed luminosities of a star).
 
 Here we see two examples of the classes of stars we needed to classify:
 
