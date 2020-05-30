@@ -9,7 +9,7 @@ categories = ["Data Science", "Kaggle Competitions"]
 
 Just before the competition, my experience with data science was:
 
-* From online courses, with most notable one the Coursera course on [Machine Learning with Andrew NG](https://www.coursera.org/learn/machine-learning). Some others included [Scalable Machine Learning with Spark](https://courses.edx.org/courses/BerkeleyX/CS190.1x), and [Computational Thinking and Data Science with Python](https://courses.edx.org/courses/course-v1:MITx+6.00.2x_3+1T2015).
+* From online courses, with most notable one the Coursera course on [Machine Learning with Andrew NG](https://www.coursera.org/learn/machine-learning). Some others included [Scalable Machine Learning with Spark](https://courses.edx.org/courses/BerkeleyX/CS190.1x/1T2015/course/), and [Computational Thinking and Data Science with Python](https://courses.edx.org/courses/course-v1:MITx+6.00.2x_3+1T2015).
 * From my [thesis](https://dl.acm.org/doi/pdf/10.1145/3200947.3201051), which had a limited focus on deep learning.
 
 I lacked, however, any practical experience and although I wanted to join kaggle competitions in the past, I did not really know how to start.
