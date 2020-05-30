@@ -4,7 +4,6 @@ draft = false
 title = "Remote Jupyter notebook locally over ssh gate"
 tags = ["python", "jupyter notebook", "ssh", "ssh config"]
 categories = ["Software Development"]
-
 toc = true
 +++
 

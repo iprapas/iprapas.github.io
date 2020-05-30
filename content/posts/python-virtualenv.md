@@ -3,8 +3,8 @@ date = "2020-05-29"
 draft = false
 title = "Easiest way to use Python virtual environments (Linux)"
 toc = true
-tags = ["python", "virtualenv"]
 categories = ["Software Development", "Best practices"]
+tags = ["python", "virtualenv"]
 +++
 
 **Disclaimer**: I know what your are thinking "That title is a clickbait". I feel a little bit bad about it. But on second thought, I don't have regrets. 
