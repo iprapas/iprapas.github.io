@@ -35,7 +35,7 @@ pip install virtualenv virtualenvwrapper
 
 ### Step 2 (Installation)
 
-Now you need to tell to make your shell aware of the existence of these libraries. Add the following lines to your `~/.bashrc`:
+Now you need to make your shell aware of the existence of these libraries. Add the following lines to your `~/.bashrc`:
 
 ```bash
 export WORKON_HOME=$HOME/.virtualenvs

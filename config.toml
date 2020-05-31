@@ -72,7 +72,7 @@ googleAnalytics = "UA-93894885-1"
     name = "Mail"
     icon = "fa fa-envelope fa-2x"
     weight = 4
-    url = "web/mail.html"
+    url = "mailto:iprapas+blog@protonmail.com"
 
 # Menu links
 [[menu.main]]
