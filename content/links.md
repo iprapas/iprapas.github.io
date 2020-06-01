@@ -3,7 +3,7 @@ title = "Links"
 slug = "links"
 +++
 
-## Mine
+## Personal
 
 * [Plasticc](https://www.kaggle.com/c/PLAsTiCC-2018) Kaggle Competition ([blog post](/posts/kaggle-plasticc) | [report](/blog/kaggle-plasticc/report.pdf) | [slides](/blog/kaggle-plasticc/slides.pdf))
 

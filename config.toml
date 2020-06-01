@@ -24,7 +24,7 @@ googleAnalytics = "UA-93894885-1"
     favicon_32 = "images/favicon.png"
     favicon_16 = "images/favicon.png"
 
-    footercontent = ""
+    footercontent = "Subscribe to the <a href='https://forms.gle/kjeq3ajUQaJ4kemu7'> newsletter</a> for a new post every now and then."
 
     hidecredits = false
     hidecopyright = false
