@@ -3,7 +3,7 @@ date = "2020-05-25"
 draft = false
 title = "Remote Jupyter notebook locally over ssh gate"
 tags = ["python", "jupyter notebook", "ssh", "ssh config"]
-categories = ["Software Development"]
+categories = ["Software Development", "Beginner"]
 toc = true
 +++
 

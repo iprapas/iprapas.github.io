@@ -4,7 +4,7 @@ draft = false
 title = "How I reached top 2% in my first kaggle competition"
 toc = true
 tags = ["kaggle", "astronomy", "competition", "python"]
-categories = ["Data Science", "Kaggle Competitions"]
+categories = ["Data Science", "Kaggle Competitions", "Story"]
 +++
 
 Just before the competition, my experience with data science was:

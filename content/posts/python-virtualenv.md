@@ -3,7 +3,7 @@ date = "2020-05-29"
 draft = false
 title = "Easiest way to use Python virtual environments (Linux)"
 toc = true
-categories = ["Software Development", "Best practices"]
+categories = ["Software Development", "Best practices", "Beginner"]
 tags = ["python", "virtualenv"]
 +++
 
