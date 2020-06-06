@@ -166,7 +166,7 @@ return a.title, score
 limit 100
 ```
 
-### Step 4. 
+### Step 4. Return recommendations
 
 An author of any of these top-100 papers is automatically considered a potential good match to review database papers. In addition, we want to identify
 gurus, i.e., very reputated authors that would be able to review for top conferences.
