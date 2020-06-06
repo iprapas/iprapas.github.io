@@ -70,7 +70,9 @@ After loading our data, we want to create our pipeline. The main idea is that sp
 
     
 
-1. First, we create the tokenizer for the symbols (non alphabetic characters):
+### Step 1. Tokenize symbols
+
+First, we create the tokenizer for the symbols (non alphabetic characters). Symbols are very important when it comes to spam messages.
 
 ```scala
 val symbolTokenizer = new RegexTokenizer()
@@ -79,7 +81,9 @@ val symbolTokenizer = new RegexTokenizer()
   .setPattern("[a-zA-Z\\ ]*")
 ```
 
-2.  Similarly, we create the tokenizer for the words (alphabetic characters)
+### Step 2. Tokenize words 
+
+Similarly, we create the tokenizer for the words. 
 
 ```scala
 val wordTokenizer = new RegexTokenizer()
@@ -89,7 +93,9 @@ val wordTokenizer = new RegexTokenizer()
 ```
 
 
-\item Then, we create the stop word remover that will remove common english words like "the, a, ...":
+### Step 3. Remove stopwords
+
+Then, we create the stop word remover that will remove common english words like "the, a, ...":
 
 ```scala
 val remover = new StopWordsRemover()
@@ -97,7 +103,9 @@ val remover = new StopWordsRemover()
                  .setOutputCol("filtered_words")
 ```
 
-\item Then, we create the bag-of-words and bag-of-symbols:
+### Step 4. Bag-of-words
+
+Then, we create the bag-of-words and bag-of-symbols:
 
 ```scala
 val bow_symbols = new CountVectorizer()
@@ -108,7 +116,10 @@ val bow_words = new CountVectorizer()
                     .setOutputCol("raw_word_features")
 ```
 
-\item We weigh them using the TF-IDF method as provided by the spark.ml api:
+
+### Step 5. TF-IDF 
+
+We weigh them using the TF-IDF method as provided by the spark.ml api:
 
 ```scala
 val idf_symbols = new IDF()
@@ -119,7 +130,9 @@ val idf_words = new IDF()
                     .setOutputCol("word_features")
 ```
 
-\item We encode the label categories ("spam", "nospam") to (0, 1), to the label column as input to our model.
+### Step 6. Label encoding
+
+We encode the label categories ("spam", "nospam") to (0, 1), to the label column as input to our model.
 
 ```scala
 val si = new StringIndexer()
@@ -127,7 +140,9 @@ val si = new StringIndexer()
              .setOutputCol("label")
 ```
 
-\item We assemble our features (symbol features, word features) in one vector:
+### Step 7. Feature Assembly 
+
+We assemble our features (symbol features, word features) in one vector:
 
 ```scala
 val assembler = new VectorAssembler()
@@ -135,13 +150,17 @@ val assembler = new VectorAssembler()
     .setOutputCol("features")
 ```
 
-\item We define a Linear SVM as our model for classification.
+### Step 8. Classifier 
+
+We define a Linear SVM as our model for classification.
 
 ```scala
 val svm = new LinearSVC()
 ```
 
-\item Last but not least, we specify the above steps as the stages of our ML pipeline
+### Step 9. Assemble pipeline 
+
+Last but not least, we specify the above steps as the stages of our ML pipeline
 
 ```scala
 val pipeline = new Pipeline()
@@ -252,13 +271,3 @@ At the time of writing the Spark api did not expose an easy way to print the par
 The performance of our model is spectacular, almost suspicious for data leakage. But we have made sure in the above steps that no data leakage takes place, isolating training and testing phases and data. Training accuracy is 100% and testing accuracy is 99.9%. Our model makes only one mistake in the test set, classifying a spam message as non spam, resulting in an $f_1 score \approx 0.999$. If we didn't achieve that high performance we would think to apply stemming to the words before weighting them with TF-IDF, but our simple pipeline already solves the problem adequately.
 
 This was a very simple dataset. If you encounter close to perfect test score in your problems, *be very suspicious*. [All models are wrong, some are useful](https://en.wikipedia.org/wiki/All_models_are_wrong).
-
-
-
-
-
-
-
-
-
-
