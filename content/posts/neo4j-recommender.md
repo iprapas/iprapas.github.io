@@ -9,7 +9,7 @@ toc = true
 
 This work is based on a project on the Semantic Data Management course I followed in Barcelona in the summer semester 2018-2019 as part of the [BDMA](https://bdma.ulb.ac.be/bdma/) Erasmus Mundus Master program.
 
-It was done in collaboration with my lab mate [Elena Ouro](https://github.com/elenaouro). [Code](https://github.com/iprapas/neo4j-academia) is available in github. 
+It was done in collaboration with my lab mate [Elena Ouro](https://github.com/elenaouro). Code available on [github](https://github.com/iprapas/neo4j-academia). 
 
 ## The problem description
 
@@ -194,5 +194,5 @@ In this article, we've seen
 
 * and how to build a simple reviewer recommender based on graphs and pagerank.
 
-Graph Databases are efficient for navigating through relations and make query-writing natural. They are the natural choice for representing connected data, analyzing their interactions and performing Graph Analytics (shortest paths, pagerank, betweeness, etc) on them.
+*Take-home message*: Graph Databases are efficient for navigating through relations and make query-writing natural. They are the natural choice for representing connected data, analyzing their interactions and performing Graph Analytics (shortest paths, pagerank, betweeness, etc) on them.
 
