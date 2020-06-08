@@ -83,8 +83,6 @@ and copy the token shown on the terminal screen.
 
 7. Open a browser on your local machine and go to [localhost:18888](localhost:18888) as we set up the `.ssh/config`. Use the token and enjoy running notebooks in your personal version of Google Collab.
 
-Feel free to leave a comment if you encounter any issues.
-
 
 
 
