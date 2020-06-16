@@ -7,7 +7,7 @@ categories = ["Software Development", "Best practices", "Beginner"]
 tags = ["python", "virtualenv"]
 +++
 
-**Disclaimer**: I know what your are thinking "That title is a clickbait". I feel a little bit bad about it. But on second thought, I don't have regrets. 
+**Disclaimer**: I know what you are thinking "That title is a clickbait". I feel a little bit bad about it. But on second thought, I don't have regrets. 
 
 It is the easiest way I know and I dare you to leave a comment if you know a better way.
 
