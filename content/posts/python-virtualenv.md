@@ -13,13 +13,13 @@ It is the easiest way I know and I dare you to leave a comment if you know a bet
 
 ## What are virtual environments
 
-Instead of adding new python packages to your system installation, you add them to a virtual installation site-packages.
+Instead of adding new python packages to your system installation, you add them to a virtual installation's site-packages.
 
 ## Why should I use them?
 
 It is best practice to develop different projects with isolated packages. If that doesn't convince you, think about the case where you have to install different versions of a library, because of different dependencies.
 
-Personal note: For me, the most useful case is using python in an environment where I don't have sudo privileges. Virtual environments let me install almost every python library I need. When this is not enough, I suggest to have a look into containers (Docker). Maybe in a future post, I'll talk about them.
+*Personal note*: For me, the most useful case is using python in an environment where I don't have sudo privileges. Virtual environments let me install almost every python library I need. When this is not enough, I suggest to have a look into containers (Docker). Maybe in a future post, I'll talk about them.
 
 ## Let's dive in 
 
@@ -27,7 +27,7 @@ My preferred method is to use `virtualenv` and `virtualenvwrapper`. I initially 
 
 ### Step 1 (Installation)
 
-First, thing you have to do is install virtualenv and virtualenvwrapper in your system-wide python installation.
+First thing you have to do is install virtualenv and virtualenvwrapper in your system-wide python installation.
 
 ```python
 pip install virtualenv virtualenvwrapper
