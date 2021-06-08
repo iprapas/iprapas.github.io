@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>BDMA Project on Ioannis Prapas</title>
+    <link>https://iprapas.github.io/categories/bdma-project/</link>
+    <description>Recent content in BDMA Project on Ioannis Prapas</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 20 Feb 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://iprapas.github.io/categories/bdma-project/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Creating a Recommender System with a Graph DB (Neo4j)</title>
+      <link>https://iprapas.github.io/posts/neo4j-recommender/</link>
+      <pubDate>Wed, 20 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://iprapas.github.io/posts/neo4j-recommender/</guid>
+      <description>This work is based on a project on the Semantic Data Management course I followed in Barcelona in the summer semester 2018-2019 as part of the BDMA Erasmus Mundus Master program.
+It was done in collaboration with my lab mate Elena Ouro. Code available on github.
+The problem description The problem is to design and implement a graph database for publishing academic literature. Then, to use an algorithm based on pagerank to suggest reviewers for papers of the database community.</description>
+    </item>
+    
+  </channel>
+</rss>

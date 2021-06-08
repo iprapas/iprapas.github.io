@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ssh on Ioannis Prapas</title>
+    <link>https://iprapas.github.io/tags/ssh/</link>
+    <description>Recent content in ssh on Ioannis Prapas</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 25 May 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://iprapas.github.io/tags/ssh/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Remote Jupyter notebook locally over ssh gate</title>
+      <link>https://iprapas.github.io/posts/remote-jupyter-notebook/</link>
+      <pubDate>Mon, 25 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://iprapas.github.io/posts/remote-jupyter-notebook/</guid>
+      <description>Problem I have encountered several times this problem:
+ Me: I want a nice interface to run python code in a remote machine.
+  Jupyter Notebook: I am here for you.
+  SSH Gate: I&amp;rsquo;ll make things trickier.
+ Well, here is the guide to setup a jupyter notebook server in a remote machine and connect to it, even if you need to pass through an ssh gate.</description>
+    </item>
+    
+  </channel>
+</rss>

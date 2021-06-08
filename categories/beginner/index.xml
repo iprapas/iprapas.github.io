@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Beginner on Ioannis Prapas</title>
+    <link>https://iprapas.github.io/categories/beginner/</link>
+    <description>Recent content in Beginner on Ioannis Prapas</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 29 May 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://iprapas.github.io/categories/beginner/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Easiest way to use Python virtual environments</title>
+      <link>https://iprapas.github.io/posts/python-virtualenv/</link>
+      <pubDate>Fri, 29 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://iprapas.github.io/posts/python-virtualenv/</guid>
+      <description>Disclaimer: I know what you are thinking &amp;ldquo;That title is a clickbait&amp;rdquo;. I feel a little bit bad about it. But on second thought, I don&amp;rsquo;t have regrets.
+It is the easiest way I know and I dare you to leave a comment if you know a better way.
+What are virtual environments Instead of adding new python packages to your system installation, you add them to a virtual installation&amp;rsquo;s site-packages.</description>
+    </item>
+    
+    <item>
+      <title>Remote Jupyter notebook locally over ssh gate</title>
+      <link>https://iprapas.github.io/posts/remote-jupyter-notebook/</link>
+      <pubDate>Mon, 25 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://iprapas.github.io/posts/remote-jupyter-notebook/</guid>
+      <description>Problem I have encountered several times this problem:
+ Me: I want a nice interface to run python code in a remote machine.
+  Jupyter Notebook: I am here for you.
+  SSH Gate: I&amp;rsquo;ll make things trickier.
+ Well, here is the guide to setup a jupyter notebook server in a remote machine and connect to it, even if you need to pass through an ssh gate.</description>
+    </item>
+    
+    <item>
+      <title>Spam Classification with Spark MLLib</title>
+      <link>https://iprapas.github.io/posts/mllib-classification/</link>
+      <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://iprapas.github.io/posts/mllib-classification/</guid>
+      <description>Disclaimer: This blog post will present my solution to an exercise of the Scalable Data Science offered by TU Berlin in winter semester 2019-2020.
+Introduction In this exercise, we had to learn a model to classify spam, nospam SMS messages. We were given the SMS Spam Collection Data Set, split in 4 files:
+  training_spam.txt
+  training_nospam.txt
+  testing_spam.txt
+  testing_spam.txt
+  The goal is to train a model on the contents of the training* files and use it to predict the testing*.</description>
+    </item>
+    
+  </channel>
+</rss>
