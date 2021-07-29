@@ -10,4 +10,4 @@ toc = true
 
 Check my new article - [Analyze Geospatial Data in Python: GeoPandas and Shapely in learndatasci.com](https://www.learndatasci.com/tutorials/geospatial-data-python-geopandas-shapely/).
 
-This is the first part of a series of articles around geospatial data analysis with Python.
+This is the first part of a series of 3 articles around geospatial data analysis with Python.
