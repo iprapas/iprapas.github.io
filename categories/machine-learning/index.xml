@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Machine Learning on Ioannis Prapas</title><link>https://iprapas.github.io/categories/machine-learning/</link><description>Recent content in Machine Learning on Ioannis Prapas</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 10 Dec 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://iprapas.github.io/categories/machine-learning/index.xml" rel="self" type="application/rss+xml"/><item><title>Spam Classification with Spark MLLib</title><link>https://iprapas.github.io/posts/mllib-classification/</link><pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate><guid>https://iprapas.github.io/posts/mllib-classification/</guid><description>Disclaimer: This blog post will present my solution to an exercise of the Scalable Data Science offered by TU Berlin in winter semester 2019-2020.
+Introduction In this exercise, we had to learn a model to classify spam, nospam SMS messages. We were given the SMS Spam Collection Data Set, split in 4 files:
+training_spam.txt
+training_nospam.txt
+testing_spam.txt
+testing_spam.txt
+The goal is to train a model on the contents of the training* files and use it to predict the testing*.</description></item></channel></rss>
