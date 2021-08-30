@@ -1,5 +1,5 @@
 +++
-date = "2021-08-31"
+date = "2021-08-30"
 draft = false
 title = "Research Article: Continuous Traning and Deployment of Deep Learning models"
 tags = ["publication", "research", "deep learning"]
