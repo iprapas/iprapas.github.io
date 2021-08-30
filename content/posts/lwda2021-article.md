@@ -1,13 +1,13 @@
 +++
 date = "2021-08-30"
 draft = false
-title = "Research Article: Continuous Traning and Deployment of Deep Learning models"
+title = "Fresh publication: Continuous Deployment of Deep Learning models"
 tags = ["publication", "research", "deep learning"]
 categories = ["Data Science", "Data Engineering", "Model Deployment", "Deep Learning"]
 toc = true
 +++
 
-Check my research article presentation at LWDA 2021 - Wednesday, Sep 1st 14:00-14:20 CET. It is free to attend, just [here](https://mcml.ai/lwda2021/attending).
+Check my research article presentation on "Continuous Training and Deployment of Deep Learning models" at LWDA 2021 - Wednesday, Sep 1st 14:00-14:20 CET. It is free to attend, you only need to register [here](https://mcml.ai/lwda2021/attending).
 
 This article is based on the thesis I did for the completion of my studies in the Big Data Management and Analytics (BDMA) Erasmus Mundus MSc.
 
