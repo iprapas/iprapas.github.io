@@ -9,9 +9,6 @@ slug = "links"
 
 * Towards Human Activity Reasoning with Computational Logic and Deep Learning (SETN 2018). ([paper](https://dl.acm.org/doi/pdf/10.1145/3200947.3201051))
 
-
-
-
 ## Misc interesting
 
 * [Good music (John Frusciante - Before The Beginning)](https://www.youtube.com/watch?v=GRe19mPhZvo)
