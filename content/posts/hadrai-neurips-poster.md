@@ -1,6 +1,6 @@
 +++
 date = "2021-12-01"
-draft = true
+draft = false
 title = "Deep Learning for Daily Wildfire Danger Forecasting (NeurIPS 2021)"
 toc = true
 categories = ["Deep Learning", "Research", "Publication"]
