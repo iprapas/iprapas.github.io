@@ -1,317 +1,160 @@
-<!doctype html><html lang=en>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta http-equiv=content-language content="en">
-<meta name=author content="Ioannis Prapas">
-<meta name=description content="Disclaimer: This blog post will present my solution to an exercise of the Scalable Data Science offered by TU Berlin in winter semester 2019-2020.
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=content-language content="en"><meta name=author content="Ioannis Prapas"><meta name=description content="Disclaimer: This blog post will present my solution to an exercise of the Scalable Data Science offered by TU Berlin in winter semester 2019-2020.
 Introduction In this exercise, we had to learn a model to classify spam, nospam SMS messages. We were given the SMS Spam Collection Data Set, split in 4 files:
   training_spam.txt
   training_nospam.txt
   testing_spam.txt
   testing_spam.txt
-  The goal is to train a model on the contents of the training* files and use it to predict the testing*.">
-<meta name=keywords content="blog,big data,machine learning,personal">
-<meta name=twitter:card content="summary">
-<meta name=twitter:title content="Spam Classification with Spark MLLib">
-<meta name=twitter:description content="Disclaimer: This blog post will present my solution to an exercise of the Scalable Data Science offered by TU Berlin in winter semester 2019-2020.
+  The goal is to train a model on the contents of the training* files and use it to predict the testing*."><meta name=keywords content="blog,big data,machine learning,personal"><meta name=twitter:card content="summary"><meta name=twitter:title content="Spam Classification with Spark MLLib"><meta name=twitter:description content="Disclaimer: This blog post will present my solution to an exercise of the Scalable Data Science offered by TU Berlin in winter semester 2019-2020.
 Introduction In this exercise, we had to learn a model to classify spam, nospam SMS messages. We were given the SMS Spam Collection Data Set, split in 4 files:
   training_spam.txt
   training_nospam.txt
   testing_spam.txt
   testing_spam.txt
-  The goal is to train a model on the contents of the training* files and use it to predict the testing*.">
-<meta property="og:title" content="Spam Classification with Spark MLLib">
-<meta property="og:description" content="Disclaimer: This blog post will present my solution to an exercise of the Scalable Data Science offered by TU Berlin in winter semester 2019-2020.
+  The goal is to train a model on the contents of the training* files and use it to predict the testing*."><meta property="og:title" content="Spam Classification with Spark MLLib"><meta property="og:description" content="Disclaimer: This blog post will present my solution to an exercise of the Scalable Data Science offered by TU Berlin in winter semester 2019-2020.
 Introduction In this exercise, we had to learn a model to classify spam, nospam SMS messages. We were given the SMS Spam Collection Data Set, split in 4 files:
   training_spam.txt
   training_nospam.txt
   testing_spam.txt
   testing_spam.txt
-  The goal is to train a model on the contents of the training* files and use it to predict the testing*.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://iprapas.github.io/posts/mllib-classification/"><meta property="article:section" content="posts">
-<meta property="article:published_time" content="2019-12-10T00:00:00+00:00">
-<meta property="article:modified_time" content="2019-12-10T00:00:00+00:00">
-<base href=https://iprapas.github.io/posts/mllib-classification/>
-<title>
-Spam Classification with Spark MLLib · Ioannis Prapas
-</title>
-<link rel=canonical href=https://iprapas.github.io/posts/mllib-classification/>
-<link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel=stylesheet>
-<link rel=stylesheet href=https://use.fontawesome.com/releases/v5.13.0/css/all.css integrity=sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V crossorigin=anonymous>
-<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin=anonymous>
-<link rel=stylesheet href=https://iprapas.github.io/css/coder.min.a4f332213a21ce8eb521670c614470c58923aaaf385e2a73982c31dd7642decb.css integrity="sha256-pPMyITohzo61IWcMYURwxYkjqq84XipzmCwx3XZC3ss=" crossorigin=anonymous media=screen>
-<link rel=icon type=image/png href=https://iprapas.github.io/images/favicon.png sizes=32x32>
-<link rel=icon type=image/png href=https://iprapas.github.io/images/favicon.png sizes=16x16>
-<meta name=generator content="Hugo 0.91.2">
-</head>
-<body class=colorscheme-light>
-<main class=wrapper>
-<nav class=navigation>
-<section class=container>
-<a class=navigation-title href=https://iprapas.github.io/>
-Ioannis Prapas
-</a>
+  The goal is to train a model on the contents of the training* files and use it to predict the testing*."><meta property="og:type" content="article"><meta property="og:url" content="https://iprapas.github.io/posts/mllib-classification/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2019-12-10T00:00:00+00:00"><meta property="article:modified_time" content="2019-12-10T00:00:00+00:00"><base href=https://iprapas.github.io/posts/mllib-classification/><title>Spam Classification with Spark MLLib · Ioannis Prapas</title><link rel=canonical href=https://iprapas.github.io/posts/mllib-classification/><link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel=stylesheet><link rel=stylesheet href=https://use.fontawesome.com/releases/v5.13.0/css/all.css integrity=sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin=anonymous><link rel=stylesheet href=https://iprapas.github.io/css/coder.min.a4f332213a21ce8eb521670c614470c58923aaaf385e2a73982c31dd7642decb.css integrity="sha256-pPMyITohzo61IWcMYURwxYkjqq84XipzmCwx3XZC3ss=" crossorigin=anonymous media=screen><link rel=icon type=image/png href=https://iprapas.github.io/images/favicon.png sizes=32x32><link rel=icon type=image/png href=https://iprapas.github.io/images/favicon.png sizes=16x16><meta name=generator content="Hugo 0.97.3"></head><body class=colorscheme-light><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=https://iprapas.github.io/>Ioannis Prapas</a>
 <input type=checkbox id=menu-toggle>
-<label class="menu-button float-right" for=menu-toggle><i class="fas fa-bars"></i></label>
-<ul class=navigation-list>
-<li class=navigation-item>
-<a class=navigation-link href=https://iprapas.github.io/>Home</a>
-</li>
-<li class=navigation-item>
-<a class=navigation-link href=https://iprapas.github.io/posts/>Blog</a>
-</li>
-<li class=navigation-item>
-<a class=navigation-link href=https://iprapas.github.io/links/>Links</a>
-</li>
-<li class=navigation-item>
-<a class=navigation-link href=https://iprapas.github.io/about/>About</a>
-</li>
-</ul>
-</section>
-</nav>
-<div class=content>
-<section class="container post">
-<article>
-<header>
-<div class=post-title>
-<h1 class=title>Spam Classification with Spark MLLib</h1>
-</div>
-<div class=post-meta>
-<div class=date>
-<span class=posted-on>
-<i class="fas fa-calendar"></i>
-<time datetime=2019-12-10T00:00:00Z>
-December 10, 2019
-</time>
-</span>
-<span class=reading-time>
-<i class="fas fa-clock"></i>
-6-minute read
-</span>
-</div>
-<div class=categories>
-<i class="fas fa-folder"></i>
+<label class="menu-button float-right" for=menu-toggle><i class="fas fa-bars"></i></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=https://iprapas.github.io/>Home</a></li><li class=navigation-item><a class=navigation-link href=https://iprapas.github.io/posts/>Blog</a></li><li class=navigation-item><a class=navigation-link href=https://iprapas.github.io/links/>Links</a></li><li class=navigation-item><a class=navigation-link href=https://iprapas.github.io/about/>About</a></li></ul></section></nav><div class=content><section class="container post"><article><header><div class=post-title><h1 class=title>Spam Classification with Spark MLLib</h1></div><div class=post-meta><div class=date><span class=posted-on><i class="fas fa-calendar"></i>
+<time datetime=2019-12-10T00:00:00Z>December 10, 2019</time></span>
+<span class=reading-time><i class="fas fa-clock"></i>
+6-minute read</span></div><div class=categories><i class="fas fa-folder"></i>
 <a href=https://iprapas.github.io/categories/machine-learning/>Machine Learning</a>
 <span class=separator>•</span>
 <a href=https://iprapas.github.io/categories/natural-language-processing/>Natural Language Processing</a>
 <span class=separator>•</span>
-<a href=https://iprapas.github.io/categories/beginner/>Beginner</a></div>
-<div class=tags>
-<i class="fas fa-tag"></i>
+<a href=https://iprapas.github.io/categories/beginner/>Beginner</a></div><div class=tags><i class="fas fa-tag"></i>
 <a href=https://iprapas.github.io/tags/scala/>scala</a>
 <span class=separator>•</span>
 <a href=https://iprapas.github.io/tags/ml/>ML</a>
 <span class=separator>•</span>
 <a href=https://iprapas.github.io/tags/spark/>Spark</a>
 <span class=separator>•</span>
-<a href=https://iprapas.github.io/tags/mllib/>MLLIB</a></div>
-</div>
-</header>
-<div>
-<p><em>Disclaimer:</em> This blog post will present my solution to an exercise of the <a href="https://moseskonto.tu-berlin.de/moses/modultransfersystem/bolognamodule/beschreibung/anzeigen.html?number=40311&version=5&sprache=2">Scalable Data Science</a> offered by <a href=https://tu-berlin.de>TU Berlin</a> in winter semester 2019-2020.</p>
-<h2 id=introduction>Introduction</h2>
-<p>In this exercise, we had to learn a model to classify <em>spam</em>, <em>nospam</em> SMS messages. We were given the <a href=https://archive.ics.uci.edu/ml/datasets/sms+spam+collection>SMS Spam Collection Data Set</a>, split in 4 files:</p>
-<ul>
-<li>
-<p><code>training_spam.txt</code></p>
-</li>
-<li>
-<p><code>training_nospam.txt</code></p>
-</li>
-<li>
-<p><code>testing_spam.txt</code></p>
-</li>
-<li>
-<p><code>testing_spam.txt</code></p>
-</li>
-</ul>
-<p>The goal is to train a model on the contents of the <code>training*</code> files and use it to predict the <code>testing*</code>.</p>
-<p>For this, we will use <a href=https://spark.apache.org/mllib/>Spark MlLib</a>, which is the Machine Learning library, built on top of Apache Spark.</p>
-<p>Let&rsquo;s dive into the solution.</p>
-<h2 id=data-loading>Data Loading</h2>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scala data-lang=scala><span style=font-style:italic>// load data as spark-datasets
-</span><span style=font-style:italic></span><span style=font-weight:700>val</span> spam_training <span style=font-weight:700>=</span> spark
-            .read.textFile(<span style=font-style:italic>&#34;./path/spam_training.txt&#34;</span>)
-<span style=font-weight:700>val</span> spam_testing <span style=font-weight:700>=</span> spark
-            .read.textFile(<span style=font-style:italic>&#34;./path/spam_testing.txt&#34;</span>)
-<span style=font-weight:700>val</span> nospam_training <span style=font-weight:700>=</span> spark
-            .read.text(<span style=font-style:italic>&#34;./path/nospam_training.txt&#34;</span>)
-<span style=font-weight:700>val</span> nospam_testing <span style=font-weight:700>=</span> spark
-            .read.text(<span style=font-style:italic>&#34;./path/nospam_testing.txt&#34;</span>)
-</code></pre></div><h2 id=dataset-imbalance>Dataset imbalance</h2>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scala data-lang=scala>println(<span style=font-style:italic>&#34;Spam training count: &#34;</span> + spam_training.count())
-println(<span style=font-style:italic>&#34;No Spam training count: &#34;</span> + nospam_training.count())
-println(<span style=font-style:italic>&#34;Spam testing count: &#34;</span> + spam_testing.count())
-println(<span style=font-style:italic>&#34;No Spam testing count: &#34;</span> + nospam_testing.count())
-</code></pre></div><p>We get the following output:</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>Spam training count: 598
-No Spam training count: 3862
-Spam testing count: 149
-No Spam testing count: 965
-</code></pre></div><p>The dataset is very imbalanced. Therefore, accuracy will not be a good measure to measure to evaluate our algorithm. Naively predicting everything as non-spam would get us an accuracy of $\frac{965}{965+149}\approx0.866$.</p>
-<p>Instead, we will use the <a href=https://en.wikipedia.org/wiki/F1_score>$f_{1}$ score</a>.</p>
-<h2 id=pipeline>Pipeline</h2>
-<p>After loading our data, we want to create our pipeline. The main idea is that spam sms contain a different distribution of both words and symbols. Thus, we construct a pipeline to create a bag-of-words and a bag-of-symbols that we weight using the TF-IDF algorithm. Then, we will use a Linear SVM to classify. The vocabulary sizes of the bags and the maximum iteration hyper-parameter of the Linear SVM will be chosen via cross-validation in the training set (train_df), based on the f1-score. Then, we will predict in the testing set (test_df) and print the accuracy, f1-score and confusion matrix that our best model achieves in both training and testing. The implementation of the above pipeline follows.</p>
-<h3 id=step-1-tokenize-symbols>Step 1. Tokenize symbols</h3>
-<p>First, we create the tokenizer for the symbols (non alphabetic characters). Symbols are very important when it comes to spam messages.</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scala data-lang=scala><span style=font-weight:700>val</span> symbolTokenizer <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> <span style=font-weight:700>RegexTokenizer</span>()
-  .setInputCol(<span style=font-style:italic>&#34;text&#34;</span>)
-  .setOutputCol(<span style=font-style:italic>&#34;symbols&#34;</span>)
-  .setPattern(<span style=font-style:italic>&#34;[a-zA-Z\\ ]*&#34;</span>)
-</code></pre></div><h3 id=step-2-tokenize-words>Step 2. Tokenize words</h3>
-<p>Similarly, we create the tokenizer for the words.</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scala data-lang=scala><span style=font-weight:700>val</span> wordTokenizer <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> <span style=font-weight:700>RegexTokenizer</span>()
-  .setInputCol(<span style=font-style:italic>&#34;text&#34;</span>)
-  .setOutputCol(<span style=font-style:italic>&#34;words&#34;</span>)
-  .setPattern(<span style=font-style:italic>&#34;[^A-Za-z]&#34;</span>)
-</code></pre></div><h3 id=step-3-remove-stopwords>Step 3. Remove stopwords</h3>
-<p>Then, we create the stop word remover that will remove common english words like &ldquo;the, a, &mldr;":</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scala data-lang=scala><span style=font-weight:700>val</span> remover <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> <span style=font-weight:700>StopWordsRemover</span>()
-                 .setInputCol(<span style=font-style:italic>&#34;words&#34;</span>)
-                 .setOutputCol(<span style=font-style:italic>&#34;filtered_words&#34;</span>)
-</code></pre></div><h3 id=step-4-bag-of-words>Step 4. Bag-of-words</h3>
-<p>Then, we create the bag-of-words and bag-of-symbols:</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scala data-lang=scala><span style=font-weight:700>val</span> bow_symbols <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> <span style=font-weight:700>CountVectorizer</span>()
-                      .setInputCol(<span style=font-style:italic>&#34;symbols&#34;</span>)
-                      .setOutputCol(<span style=font-style:italic>&#34;raw_symbol_features&#34;</span>)
-<span style=font-weight:700>val</span> bow_words <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> <span style=font-weight:700>CountVectorizer</span>()
-                    .setInputCol(<span style=font-style:italic>&#34;filtered_words&#34;</span>)
-                    .setOutputCol(<span style=font-style:italic>&#34;raw_word_features&#34;</span>)
-</code></pre></div><h3 id=step-5-tf-idf>Step 5. TF-IDF</h3>
-<p>We weigh them using the TF-IDF method as provided by the spark.ml api:</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scala data-lang=scala><span style=font-weight:700>val</span> idf_symbols <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> <span style=font-weight:700>IDF</span>()
-                      .setInputCol(<span style=font-style:italic>&#34;raw_symbol_features&#34;</span>)
-                      .setOutputCol(<span style=font-style:italic>&#34;symbol_features&#34;</span>)
-<span style=font-weight:700>val</span> idf_words <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> <span style=font-weight:700>IDF</span>()
-                    .setInputCol(<span style=font-style:italic>&#34;raw_word_features&#34;</span>)
-                    .setOutputCol(<span style=font-style:italic>&#34;word_features&#34;</span>)
-</code></pre></div><h3 id=step-6-label-encoding>Step 6. Label encoding</h3>
-<p>We encode the label categories (&ldquo;spam&rdquo;, &ldquo;nospam&rdquo;) to (0, 1), to the label column as input to our model.</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scala data-lang=scala><span style=font-weight:700>val</span> si <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> <span style=font-weight:700>StringIndexer</span>()
-             .setInputCol(<span style=font-style:italic>&#34;label_category&#34;</span>)
-             .setOutputCol(<span style=font-style:italic>&#34;label&#34;</span>)
-</code></pre></div><h3 id=step-7-feature-assembly>Step 7. Feature Assembly</h3>
-<p>We assemble our features (symbol features, word features) in one vector:</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scala data-lang=scala><span style=font-weight:700>val</span> assembler <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> <span style=font-weight:700>VectorAssembler</span>()
-    .setInputCols(<span style=font-weight:700>Array</span>(<span style=font-style:italic>&#34;symbol_features&#34;</span>, <span style=font-style:italic>&#34;word_features&#34;</span>))
-    .setOutputCol(<span style=font-style:italic>&#34;features&#34;</span>)
-</code></pre></div><h3 id=step-8-classifier>Step 8. Classifier</h3>
-<p>We define a Linear SVM as our model for classification.</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scala data-lang=scala><span style=font-weight:700>val</span> svm <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> <span style=font-weight:700>LinearSVC</span>()
-</code></pre></div><h3 id=step-9-assemble-pipeline>Step 9. Assemble pipeline</h3>
-<p>Last but not least, we specify the above steps as the stages of our ML pipeline</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scala data-lang=scala><span style=font-weight:700>val</span> pipeline <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> <span style=font-weight:700>Pipeline</span>()
-  .setStages(<span style=font-weight:700>Array</span>(
-    symbolTokenizer, <span style=font-style:italic>// tokenize symbols 
-</span><span style=font-style:italic></span>    wordTokenizer,  <span style=font-style:italic>// tokenize words
-</span><span style=font-style:italic></span>    remover, <span style=font-style:italic>// remove stopwords
-</span><span style=font-style:italic></span>    bow_symbols, <span style=font-style:italic>// bag-of-words
-</span><span style=font-style:italic></span>    bow_words,   <span style=font-style:italic>// bag-of-symbols
-</span><span style=font-style:italic></span>    idf_symbols, <span style=font-style:italic>// tf-idf for bag-of-symbols
-</span><span style=font-style:italic></span>    idf_words, <span style=font-style:italic>// tf-idf for bag-of-words
-</span><span style=font-style:italic></span>    assembler, <span style=font-style:italic>// assemble features in one vector
-</span><span style=font-style:italic></span>    si,  <span style=font-style:italic>// encode label category
-</span><span style=font-style:italic></span>    svm <span style=font-style:italic>// svm classifier
-</span><span style=font-style:italic></span>  ))
-</code></pre></div><h2 id=cross-validation>Cross Validation</h2>
-<p>There are some hyper-parameters of our model that we need to tune:</p>
-<ul>
-<li>Vocabulary size of the bag-of-words</li>
-<li>Vocabulary size of the bag-of-symbols</li>
-<li>Max iterations for the SVM model</li>
-</ul>
-<p>There are of course other parameters that we could also tune, which could be more meaningful but want to avoid a very slow training and just have this here to showcase how to use cross-validation for evaluation in MlLib.</p>
-<p>To avoid overfitting to our testing set, we perform 5-fold cross validation in the training in order to tune these parameters. As discussed earlier, for such an imbalanced dataset, $f_{1} score$ is a better metric to optimize than accuracy. Therefore we perform the cross validation, using $f_{1} score$ for the evaluation of each model.</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scala data-lang=scala><span style=font-weight:700>val</span> multiEvaluator <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> <span style=font-weight:700>MulticlassClassificationEvaluator</span>()
-  .setLabelCol(<span style=font-style:italic>&#34;label&#34;</span>)
-  .setMetricName(<span style=font-style:italic>&#34;f1&#34;</span>)
-  .setPredictionCol(<span style=font-style:italic>&#34;prediction&#34;</span>)
-
-<span style=font-style:italic>// We use a ParamGridBuilder to 
-</span><span style=font-style:italic>// construct a grid of parameters to search over.
-</span><span style=font-style:italic>// With 2 values for each CountVectorizer.vocabSize
-</span><span style=font-style:italic>// and 2 values for svm.maxIter,
-</span><span style=font-style:italic>// this grid will have 2 x 2 x 2 = 8 parameter 
-</span><span style=font-style:italic>// settings for CrossValidator to choose from.
-</span><span style=font-style:italic></span><span style=font-weight:700>val</span> paramGrid <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> <span style=font-weight:700>ParamGridBuilder</span>()
-  .addGrid(bow_symbols.vocabSize, <span style=font-weight:700>Array</span>(1000, 2000))
-  .addGrid(bow_words.vocabSize, <span style=font-weight:700>Array</span>(1000, 2000))
-  .addGrid(svm.maxIter, <span style=font-weight:700>Array</span>(10, 20))
-  .build()
-
-<span style=font-style:italic>// We now treat the Pipeline as an Estimator, 
-</span><span style=font-style:italic>// wrapping it in a CrossValidator instance.
-</span><span style=font-style:italic>// This will allow us to choose 
-</span><span style=font-style:italic>// parameters for all Pipeline stages.
-</span><span style=font-style:italic>// A CrossValidator requires an Estimator, 
-</span><span style=font-style:italic>// a set of Estimator ParamMaps, and an Evaluator.
-</span><span style=font-style:italic>// We choose to optimize f1-score and 
-</span><span style=font-style:italic>// thus use the MulticlassClassificationEvaluator 
-</span><span style=font-style:italic>// that supports the metric
-</span><span style=font-style:italic></span><span style=font-weight:700>val</span> cv <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> <span style=font-weight:700>CrossValidator</span>()
-  .setEstimator(pipeline)
-  .setEvaluator(multiEvaluator)
-  .setEstimatorParamMaps(paramGrid)
-  .setNumFolds(5)
-  .setSeed(42) <span style=font-style:italic>// set a seed for reproducible results
-</span><span style=font-style:italic></span>  
-<span style=font-style:italic>// Run cross-validation, 
-</span><span style=font-style:italic>// and choose the best set of parameters.
-</span><span style=font-style:italic></span><span style=font-weight:700>val</span> cvModel <span style=font-weight:700>=</span> cv.fit(train_df)
-</code></pre></div><h2 id=evaluation>Evaluation</h2>
-<p>To evaluate our model, we will print the accuracy, the $f_{1} score$ and the confusion matrix both in training and testing sets.</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scala data-lang=scala><span style=font-weight:700>val</span> predictionsTrain <span style=font-weight:700>=</span> cvModel.transform(train_df)
-<span style=font-weight:700>val</span> predictionsTest <span style=font-weight:700>=</span> cvModel.transform(test_df)
-<span style=font-weight:700>val</span> predictionAndLabelsTrain <span style=font-weight:700>=</span> predictionsTrain
-  .select(<span style=font-style:italic>&#34;prediction&#34;</span>, <span style=font-style:italic>&#34;label&#34;</span>)
-  .rdd.map(row <span style=font-weight:700>=&gt;</span> (row.getDouble(0),row.getDouble(1)))
-
-<span style=font-weight:700>val</span> predictionAndLabelsTest <span style=font-weight:700>=</span> predictionsTest
-  .select(<span style=font-style:italic>&#34;prediction&#34;</span>, <span style=font-style:italic>&#34;label&#34;</span>)
-  .rdd.map(row <span style=font-weight:700>=&gt;</span> (row.getDouble(0),row.getDouble(1)))
-<span style=font-weight:700>val</span> multiMetricsTrain <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> <span style=font-weight:700>MulticlassMetrics</span>(predictionAndLabelsTrain)
-<span style=font-weight:700>val</span> multiMetricsTest <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> <span style=font-weight:700>MulticlassMetrics</span>(predictionAndLabelsTest)
-
-
-println(<span style=font-style:italic>&#34;----Training-----&#34;</span>)
-println(<span style=font-style:italic>&#34;F1-Score = &#34;</span> + multiEvaluator.evaluate(predictionsTrain))
-println(<span style=font-style:italic>&#34;Accuracy = &#34;</span> + multiMetricsTrain.accuracy)
-println(<span style=font-style:italic>&#34;Confusion matrix:\nSpam\tNotSpam\n&#34;</span>+ multiMetricsTrain.confusionMatrix)
-println(<span style=font-style:italic>&#34;----Testing-----&#34;</span>)
-println(<span style=font-style:italic>&#34;F1-Score = &#34;</span> + multiEvaluator.evaluate(predictionsTest))
-println(<span style=font-style:italic>&#34;Accuracy = &#34;</span> + multiMetricsTest.accuracy)
-println(<span style=font-style:italic>&#34;Confusion matrix:\nSpam\tNotSpam\n&#34;</span>+ multiMetricsTest.confusionMatrix)
-</code></pre></div><p><img src=https://iprapas.github.io/blog/mllib-classification/raw_results.PNG alt=raw_results></p>
-<p>Figure: Raw output of model evaluation</p>
-<p>At the time of writing the Spark api did not expose an easy way to print the parameters of the best model with a simple function call, but of course searching on stackoverflow gives us <a href=https://stackoverflow.com/questions/31749593/how-to-extract-best-parameters-from-a-crossvalidatormodel>a way</a>. We find out that the best model was the one with vocabulary sizes of 1000 and 20 maximum iterations.</p>
-<h2 id=last-note>Last note</h2>
-<p>The performance of our model is spectacular, almost suspicious for data leakage. But we have made sure in the above steps that no data leakage takes place, isolating training and testing phases and data. Training accuracy is 100% and testing accuracy is 99.9%. Our model makes only one mistake in the test set, classifying a spam message as non spam, resulting in an $f_1 score \approx 0.999$. If we didn&rsquo;t achieve that high performance we would think to apply stemming to the words before weighting them with TF-IDF, but our simple pipeline already solves the problem adequately.</p>
-<p>This was a very simple dataset. If you encounter close to perfect test score in your problems, <em>be very suspicious</em>. <a href=https://en.wikipedia.org/wiki/All_models_are_wrong>All models are wrong, some are useful</a>.</p>
-</div>
-<footer>
-<p>For any questions, please leave a comment or send me an <a href=mailto:iprapas+blog@protonmail.com>email</a>. If you liked the post, don't forget to subscribe to the <a href=https://forms.gle/kjeq3ajUQaJ4kemu7> newsletter</a> for a new post every now and then.</p>
-<script src=https://utteranc.es/client.js repo=iprapas/iprapas.github.io issue-term=pathname theme=preferred-color-scheme crossorigin=anonymous async></script>
-</footer>
-</article>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<a href=https://iprapas.github.io/tags/mllib/>MLLIB</a></div></div></header><div><p><em>Disclaimer:</em> This blog post will present my solution to an exercise of the <a href="https://moseskonto.tu-berlin.de/moses/modultransfersystem/bolognamodule/beschreibung/anzeigen.html?number=40311&version=5&sprache=2">Scalable Data Science</a> offered by <a href=https://tu-berlin.de>TU Berlin</a> in winter semester 2019-2020.</p><h2 id=introduction>Introduction</h2><p>In this exercise, we had to learn a model to classify <em>spam</em>, <em>nospam</em> SMS messages. We were given the <a href=https://archive.ics.uci.edu/ml/datasets/sms+spam+collection>SMS Spam Collection Data Set</a>, split in 4 files:</p><ul><li><p><code>training_spam.txt</code></p></li><li><p><code>training_nospam.txt</code></p></li><li><p><code>testing_spam.txt</code></p></li><li><p><code>testing_spam.txt</code></p></li></ul><p>The goal is to train a model on the contents of the <code>training*</code> files and use it to predict the <code>testing*</code>.</p><p>For this, we will use <a href=https://spark.apache.org/mllib/>Spark MlLib</a>, which is the Machine Learning library, built on top of Apache Spark.</p><p>Let&rsquo;s dive into the solution.</p><h2 id=data-loading>Data Loading</h2><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scala data-lang=scala><span style=display:flex><span><span style=font-style:italic>// load data as spark-datasets
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>val</span> spam_training <span style=font-weight:700>=</span> spark
+</span></span><span style=display:flex><span>            .read.textFile(<span style=font-style:italic>&#34;./path/spam_training.txt&#34;</span>)
+</span></span><span style=display:flex><span><span style=font-weight:700>val</span> spam_testing <span style=font-weight:700>=</span> spark
+</span></span><span style=display:flex><span>            .read.textFile(<span style=font-style:italic>&#34;./path/spam_testing.txt&#34;</span>)
+</span></span><span style=display:flex><span><span style=font-weight:700>val</span> nospam_training <span style=font-weight:700>=</span> spark
+</span></span><span style=display:flex><span>            .read.text(<span style=font-style:italic>&#34;./path/nospam_training.txt&#34;</span>)
+</span></span><span style=display:flex><span><span style=font-weight:700>val</span> nospam_testing <span style=font-weight:700>=</span> spark
+</span></span><span style=display:flex><span>            .read.text(<span style=font-style:italic>&#34;./path/nospam_testing.txt&#34;</span>)
+</span></span></code></pre></div><h2 id=dataset-imbalance>Dataset imbalance</h2><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scala data-lang=scala><span style=display:flex><span>println(<span style=font-style:italic>&#34;Spam training count: &#34;</span> + spam_training.count())
+</span></span><span style=display:flex><span>println(<span style=font-style:italic>&#34;No Spam training count: &#34;</span> + nospam_training.count())
+</span></span><span style=display:flex><span>println(<span style=font-style:italic>&#34;Spam testing count: &#34;</span> + spam_testing.count())
+</span></span><span style=display:flex><span>println(<span style=font-style:italic>&#34;No Spam testing count: &#34;</span> + nospam_testing.count())
+</span></span></code></pre></div><p>We get the following output:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>Spam training count: 598
+</span></span><span style=display:flex><span>No Spam training count: 3862
+</span></span><span style=display:flex><span>Spam testing count: 149
+</span></span><span style=display:flex><span>No Spam testing count: 965
+</span></span></code></pre></div><p>The dataset is very imbalanced. Therefore, accuracy will not be a good measure to measure to evaluate our algorithm. Naively predicting everything as non-spam would get us an accuracy of $\frac{965}{965+149}\approx0.866$.</p><p>Instead, we will use the <a href=https://en.wikipedia.org/wiki/F1_score>$f_{1}$ score</a>.</p><h2 id=pipeline>Pipeline</h2><p>After loading our data, we want to create our pipeline. The main idea is that spam sms contain a different distribution of both words and symbols. Thus, we construct a pipeline to create a bag-of-words and a bag-of-symbols that we weight using the TF-IDF algorithm. Then, we will use a Linear SVM to classify. The vocabulary sizes of the bags and the maximum iteration hyper-parameter of the Linear SVM will be chosen via cross-validation in the training set (train_df), based on the f1-score. Then, we will predict in the testing set (test_df) and print the accuracy, f1-score and confusion matrix that our best model achieves in both training and testing. The implementation of the above pipeline follows.</p><h3 id=step-1-tokenize-symbols>Step 1. Tokenize symbols</h3><p>First, we create the tokenizer for the symbols (non alphabetic characters). Symbols are very important when it comes to spam messages.</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scala data-lang=scala><span style=display:flex><span><span style=font-weight:700>val</span> symbolTokenizer <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> <span style=font-weight:700>RegexTokenizer</span>()
+</span></span><span style=display:flex><span>  .setInputCol(<span style=font-style:italic>&#34;text&#34;</span>)
+</span></span><span style=display:flex><span>  .setOutputCol(<span style=font-style:italic>&#34;symbols&#34;</span>)
+</span></span><span style=display:flex><span>  .setPattern(<span style=font-style:italic>&#34;[a-zA-Z\\ ]*&#34;</span>)
+</span></span></code></pre></div><h3 id=step-2-tokenize-words>Step 2. Tokenize words</h3><p>Similarly, we create the tokenizer for the words.</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scala data-lang=scala><span style=display:flex><span><span style=font-weight:700>val</span> wordTokenizer <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> <span style=font-weight:700>RegexTokenizer</span>()
+</span></span><span style=display:flex><span>  .setInputCol(<span style=font-style:italic>&#34;text&#34;</span>)
+</span></span><span style=display:flex><span>  .setOutputCol(<span style=font-style:italic>&#34;words&#34;</span>)
+</span></span><span style=display:flex><span>  .setPattern(<span style=font-style:italic>&#34;[^A-Za-z]&#34;</span>)
+</span></span></code></pre></div><h3 id=step-3-remove-stopwords>Step 3. Remove stopwords</h3><p>Then, we create the stop word remover that will remove common english words like &ldquo;the, a, &mldr;&rdquo;:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scala data-lang=scala><span style=display:flex><span><span style=font-weight:700>val</span> remover <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> <span style=font-weight:700>StopWordsRemover</span>()
+</span></span><span style=display:flex><span>                 .setInputCol(<span style=font-style:italic>&#34;words&#34;</span>)
+</span></span><span style=display:flex><span>                 .setOutputCol(<span style=font-style:italic>&#34;filtered_words&#34;</span>)
+</span></span></code></pre></div><h3 id=step-4-bag-of-words>Step 4. Bag-of-words</h3><p>Then, we create the bag-of-words and bag-of-symbols:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scala data-lang=scala><span style=display:flex><span><span style=font-weight:700>val</span> bow_symbols <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> <span style=font-weight:700>CountVectorizer</span>()
+</span></span><span style=display:flex><span>                      .setInputCol(<span style=font-style:italic>&#34;symbols&#34;</span>)
+</span></span><span style=display:flex><span>                      .setOutputCol(<span style=font-style:italic>&#34;raw_symbol_features&#34;</span>)
+</span></span><span style=display:flex><span><span style=font-weight:700>val</span> bow_words <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> <span style=font-weight:700>CountVectorizer</span>()
+</span></span><span style=display:flex><span>                    .setInputCol(<span style=font-style:italic>&#34;filtered_words&#34;</span>)
+</span></span><span style=display:flex><span>                    .setOutputCol(<span style=font-style:italic>&#34;raw_word_features&#34;</span>)
+</span></span></code></pre></div><h3 id=step-5-tf-idf>Step 5. TF-IDF</h3><p>We weigh them using the TF-IDF method as provided by the spark.ml api:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scala data-lang=scala><span style=display:flex><span><span style=font-weight:700>val</span> idf_symbols <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> <span style=font-weight:700>IDF</span>()
+</span></span><span style=display:flex><span>                      .setInputCol(<span style=font-style:italic>&#34;raw_symbol_features&#34;</span>)
+</span></span><span style=display:flex><span>                      .setOutputCol(<span style=font-style:italic>&#34;symbol_features&#34;</span>)
+</span></span><span style=display:flex><span><span style=font-weight:700>val</span> idf_words <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> <span style=font-weight:700>IDF</span>()
+</span></span><span style=display:flex><span>                    .setInputCol(<span style=font-style:italic>&#34;raw_word_features&#34;</span>)
+</span></span><span style=display:flex><span>                    .setOutputCol(<span style=font-style:italic>&#34;word_features&#34;</span>)
+</span></span></code></pre></div><h3 id=step-6-label-encoding>Step 6. Label encoding</h3><p>We encode the label categories (&ldquo;spam&rdquo;, &ldquo;nospam&rdquo;) to (0, 1), to the label column as input to our model.</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scala data-lang=scala><span style=display:flex><span><span style=font-weight:700>val</span> si <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> <span style=font-weight:700>StringIndexer</span>()
+</span></span><span style=display:flex><span>             .setInputCol(<span style=font-style:italic>&#34;label_category&#34;</span>)
+</span></span><span style=display:flex><span>             .setOutputCol(<span style=font-style:italic>&#34;label&#34;</span>)
+</span></span></code></pre></div><h3 id=step-7-feature-assembly>Step 7. Feature Assembly</h3><p>We assemble our features (symbol features, word features) in one vector:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scala data-lang=scala><span style=display:flex><span><span style=font-weight:700>val</span> assembler <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> <span style=font-weight:700>VectorAssembler</span>()
+</span></span><span style=display:flex><span>    .setInputCols(<span style=font-weight:700>Array</span>(<span style=font-style:italic>&#34;symbol_features&#34;</span>, <span style=font-style:italic>&#34;word_features&#34;</span>))
+</span></span><span style=display:flex><span>    .setOutputCol(<span style=font-style:italic>&#34;features&#34;</span>)
+</span></span></code></pre></div><h3 id=step-8-classifier>Step 8. Classifier</h3><p>We define a Linear SVM as our model for classification.</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scala data-lang=scala><span style=display:flex><span><span style=font-weight:700>val</span> svm <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> <span style=font-weight:700>LinearSVC</span>()
+</span></span></code></pre></div><h3 id=step-9-assemble-pipeline>Step 9. Assemble pipeline</h3><p>Last but not least, we specify the above steps as the stages of our ML pipeline</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scala data-lang=scala><span style=display:flex><span><span style=font-weight:700>val</span> pipeline <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> <span style=font-weight:700>Pipeline</span>()
+</span></span><span style=display:flex><span>  .setStages(<span style=font-weight:700>Array</span>(
+</span></span><span style=display:flex><span>    symbolTokenizer, <span style=font-style:italic>// tokenize symbols 
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>    wordTokenizer,  <span style=font-style:italic>// tokenize words
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>    remover, <span style=font-style:italic>// remove stopwords
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>    bow_symbols, <span style=font-style:italic>// bag-of-words
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>    bow_words,   <span style=font-style:italic>// bag-of-symbols
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>    idf_symbols, <span style=font-style:italic>// tf-idf for bag-of-symbols
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>    idf_words, <span style=font-style:italic>// tf-idf for bag-of-words
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>    assembler, <span style=font-style:italic>// assemble features in one vector
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>    si,  <span style=font-style:italic>// encode label category
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>    svm <span style=font-style:italic>// svm classifier
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  ))
+</span></span></code></pre></div><h2 id=cross-validation>Cross Validation</h2><p>There are some hyper-parameters of our model that we need to tune:</p><ul><li>Vocabulary size of the bag-of-words</li><li>Vocabulary size of the bag-of-symbols</li><li>Max iterations for the SVM model</li></ul><p>There are of course other parameters that we could also tune, which could be more meaningful but want to avoid a very slow training and just have this here to showcase how to use cross-validation for evaluation in MlLib.</p><p>To avoid overfitting to our testing set, we perform 5-fold cross validation in the training in order to tune these parameters. As discussed earlier, for such an imbalanced dataset, $f_{1} score$ is a better metric to optimize than accuracy. Therefore we perform the cross validation, using $f_{1} score$ for the evaluation of each model.</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scala data-lang=scala><span style=display:flex><span><span style=font-weight:700>val</span> multiEvaluator <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> <span style=font-weight:700>MulticlassClassificationEvaluator</span>()
+</span></span><span style=display:flex><span>  .setLabelCol(<span style=font-style:italic>&#34;label&#34;</span>)
+</span></span><span style=display:flex><span>  .setMetricName(<span style=font-style:italic>&#34;f1&#34;</span>)
+</span></span><span style=display:flex><span>  .setPredictionCol(<span style=font-style:italic>&#34;prediction&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=font-style:italic>// We use a ParamGridBuilder to 
+</span></span></span><span style=display:flex><span><span style=font-style:italic>// construct a grid of parameters to search over.
+</span></span></span><span style=display:flex><span><span style=font-style:italic>// With 2 values for each CountVectorizer.vocabSize
+</span></span></span><span style=display:flex><span><span style=font-style:italic>// and 2 values for svm.maxIter,
+</span></span></span><span style=display:flex><span><span style=font-style:italic>// this grid will have 2 x 2 x 2 = 8 parameter 
+</span></span></span><span style=display:flex><span><span style=font-style:italic>// settings for CrossValidator to choose from.
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>val</span> paramGrid <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> <span style=font-weight:700>ParamGridBuilder</span>()
+</span></span><span style=display:flex><span>  .addGrid(bow_symbols.vocabSize, <span style=font-weight:700>Array</span>(1000, 2000))
+</span></span><span style=display:flex><span>  .addGrid(bow_words.vocabSize, <span style=font-weight:700>Array</span>(1000, 2000))
+</span></span><span style=display:flex><span>  .addGrid(svm.maxIter, <span style=font-weight:700>Array</span>(10, 20))
+</span></span><span style=display:flex><span>  .build()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=font-style:italic>// We now treat the Pipeline as an Estimator, 
+</span></span></span><span style=display:flex><span><span style=font-style:italic>// wrapping it in a CrossValidator instance.
+</span></span></span><span style=display:flex><span><span style=font-style:italic>// This will allow us to choose 
+</span></span></span><span style=display:flex><span><span style=font-style:italic>// parameters for all Pipeline stages.
+</span></span></span><span style=display:flex><span><span style=font-style:italic>// A CrossValidator requires an Estimator, 
+</span></span></span><span style=display:flex><span><span style=font-style:italic>// a set of Estimator ParamMaps, and an Evaluator.
+</span></span></span><span style=display:flex><span><span style=font-style:italic>// We choose to optimize f1-score and 
+</span></span></span><span style=display:flex><span><span style=font-style:italic>// thus use the MulticlassClassificationEvaluator 
+</span></span></span><span style=display:flex><span><span style=font-style:italic>// that supports the metric
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>val</span> cv <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> <span style=font-weight:700>CrossValidator</span>()
+</span></span><span style=display:flex><span>  .setEstimator(pipeline)
+</span></span><span style=display:flex><span>  .setEvaluator(multiEvaluator)
+</span></span><span style=display:flex><span>  .setEstimatorParamMaps(paramGrid)
+</span></span><span style=display:flex><span>  .setNumFolds(5)
+</span></span><span style=display:flex><span>  .setSeed(42) <span style=font-style:italic>// set a seed for reproducible results
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  
+</span></span><span style=display:flex><span><span style=font-style:italic>// Run cross-validation, 
+</span></span></span><span style=display:flex><span><span style=font-style:italic>// and choose the best set of parameters.
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>val</span> cvModel <span style=font-weight:700>=</span> cv.fit(train_df)
+</span></span></code></pre></div><h2 id=evaluation>Evaluation</h2><p>To evaluate our model, we will print the accuracy, the $f_{1} score$ and the confusion matrix both in training and testing sets.</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scala data-lang=scala><span style=display:flex><span><span style=font-weight:700>val</span> predictionsTrain <span style=font-weight:700>=</span> cvModel.transform(train_df)
+</span></span><span style=display:flex><span><span style=font-weight:700>val</span> predictionsTest <span style=font-weight:700>=</span> cvModel.transform(test_df)
+</span></span><span style=display:flex><span><span style=font-weight:700>val</span> predictionAndLabelsTrain <span style=font-weight:700>=</span> predictionsTrain
+</span></span><span style=display:flex><span>  .select(<span style=font-style:italic>&#34;prediction&#34;</span>, <span style=font-style:italic>&#34;label&#34;</span>)
+</span></span><span style=display:flex><span>  .rdd.map(row <span style=font-weight:700>=&gt;</span> (row.getDouble(0),row.getDouble(1)))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=font-weight:700>val</span> predictionAndLabelsTest <span style=font-weight:700>=</span> predictionsTest
+</span></span><span style=display:flex><span>  .select(<span style=font-style:italic>&#34;prediction&#34;</span>, <span style=font-style:italic>&#34;label&#34;</span>)
+</span></span><span style=display:flex><span>  .rdd.map(row <span style=font-weight:700>=&gt;</span> (row.getDouble(0),row.getDouble(1)))
+</span></span><span style=display:flex><span><span style=font-weight:700>val</span> multiMetricsTrain <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> <span style=font-weight:700>MulticlassMetrics</span>(predictionAndLabelsTrain)
+</span></span><span style=display:flex><span><span style=font-weight:700>val</span> multiMetricsTest <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> <span style=font-weight:700>MulticlassMetrics</span>(predictionAndLabelsTest)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>println(<span style=font-style:italic>&#34;----Training-----&#34;</span>)
+</span></span><span style=display:flex><span>println(<span style=font-style:italic>&#34;F1-Score = &#34;</span> + multiEvaluator.evaluate(predictionsTrain))
+</span></span><span style=display:flex><span>println(<span style=font-style:italic>&#34;Accuracy = &#34;</span> + multiMetricsTrain.accuracy)
+</span></span><span style=display:flex><span>println(<span style=font-style:italic>&#34;Confusion matrix:\nSpam\tNotSpam\n&#34;</span>+ multiMetricsTrain.confusionMatrix)
+</span></span><span style=display:flex><span>println(<span style=font-style:italic>&#34;----Testing-----&#34;</span>)
+</span></span><span style=display:flex><span>println(<span style=font-style:italic>&#34;F1-Score = &#34;</span> + multiEvaluator.evaluate(predictionsTest))
+</span></span><span style=display:flex><span>println(<span style=font-style:italic>&#34;Accuracy = &#34;</span> + multiMetricsTest.accuracy)
+</span></span><span style=display:flex><span>println(<span style=font-style:italic>&#34;Confusion matrix:\nSpam\tNotSpam\n&#34;</span>+ multiMetricsTest.confusionMatrix)
+</span></span></code></pre></div><p><img src=https://iprapas.github.io/blog/mllib-classification/raw_results.PNG alt=raw_results></p><p>Figure: Raw output of model evaluation</p><p>At the time of writing the Spark api did not expose an easy way to print the parameters of the best model with a simple function call, but of course searching on stackoverflow gives us <a href=https://stackoverflow.com/questions/31749593/how-to-extract-best-parameters-from-a-crossvalidatormodel>a way</a>. We find out that the best model was the one with vocabulary sizes of 1000 and 20 maximum iterations.</p><h2 id=last-note>Last note</h2><p>The performance of our model is spectacular, almost suspicious for data leakage. But we have made sure in the above steps that no data leakage takes place, isolating training and testing phases and data. Training accuracy is 100% and testing accuracy is 99.9%. Our model makes only one mistake in the test set, classifying a spam message as non spam, resulting in an $f_1 score \approx 0.999$. If we didn&rsquo;t achieve that high performance we would think to apply stemming to the words before weighting them with TF-IDF, but our simple pipeline already solves the problem adequately.</p><p>This was a very simple dataset. If you encounter close to perfect test score in your problems, <em>be very suspicious</em>. <a href=https://en.wikipedia.org/wiki/All_models_are_wrong>All models are wrong, some are useful</a>.</p></div><footer><p>For any questions, please leave a comment or send me an <a href=mailto:iprapas+blog@protonmail.com>email</a>. If you liked the post, don't forget to subscribe to the <a href=https://forms.gle/kjeq3ajUQaJ4kemu7>newsletter</a> for a new post every now and then.</p><script src=https://utteranc.es/client.js repo=iprapas/iprapas.github.io issue-term=pathname theme=preferred-color-scheme crossorigin=anonymous async></script></footer></article><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script type=text/javascript async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script>
 <script src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/startup.js id=MathJax-script></script>
-<script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],processEscapes:!0,processEnvironments:!0},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}}</script>
-</section>
-</div>
-<footer class=footer>
-<section class=container>
-<p>Subscribe to the <a href=https://forms.gle/kjeq3ajUQaJ4kemu7> newsletter</a> for a new post every now and then.</p>
-©
-2021
+<script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],processEscapes:!0,processEnvironments:!0},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]}}</script></section></div><footer class=footer><section class=container><p>Subscribe to the <a href=https://forms.gle/kjeq3ajUQaJ4kemu7>newsletter</a> for a new post every now and then.</p>©
+2022
 Ioannis Prapas
 ·
-Powered by <a href=https://gohugo.io/>Hugo</a> & <a href=https://github.com/luizdepra/hugo-coder/>Coder</a>.
-</section>
-</footer>
-</main>
-<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-93894885-1','auto'),ga('send','pageview'))</script>
-</body>
-</html>
+Powered by <a href=https://gohugo.io/>Hugo</a> & <a href=https://github.com/luizdepra/hugo-coder/>Coder</a>.</section></footer></main><script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(e,o,i,a,t,n,s){e.GoogleAnalyticsObject=t,e[t]=e[t]||function(){(e[t].q=e[t].q||[]).push(arguments)},e[t].l=1*new Date,n=o.createElement(i),s=o.getElementsByTagName(i)[0],n.async=1,n.src=a,s.parentNode.insertBefore(n,s)}(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-93894885-1","auto"),ga("send","pageview"))</script></body></html>

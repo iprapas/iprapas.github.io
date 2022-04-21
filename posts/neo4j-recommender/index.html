@@ -1,277 +1,103 @@
-<!doctype html><html lang=en>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta http-equiv=content-language content="en">
-<meta name=author content="Ioannis Prapas">
-<meta name=description content="This work is based on a project on the Semantic Data Management course I followed in Barcelona in the summer semester 2018-2019 as part of the BDMA Erasmus Mundus Master program.
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=content-language content="en"><meta name=author content="Ioannis Prapas"><meta name=description content="This work is based on a project on the Semantic Data Management course I followed in Barcelona in the summer semester 2018-2019 as part of the BDMA Erasmus Mundus Master program.
 It was done in collaboration with my lab mate Elena Ouro. Code available on github.
-The problem description The problem is to design and implement a graph database for publishing academic literature. Then, to use an algorithm based on pagerank to suggest reviewers for papers of the database community.">
-<meta name=keywords content="blog,big data,machine learning,personal">
-<meta name=twitter:card content="summary">
-<meta name=twitter:title content="Creating a Recommender System with a Graph DB (Neo4j)">
-<meta name=twitter:description content="This work is based on a project on the Semantic Data Management course I followed in Barcelona in the summer semester 2018-2019 as part of the BDMA Erasmus Mundus Master program.
+The problem description The problem is to design and implement a graph database for publishing academic literature. Then, to use an algorithm based on pagerank to suggest reviewers for papers of the database community."><meta name=keywords content="blog,big data,machine learning,personal"><meta name=twitter:card content="summary"><meta name=twitter:title content="Creating a Recommender System with a Graph DB (Neo4j)"><meta name=twitter:description content="This work is based on a project on the Semantic Data Management course I followed in Barcelona in the summer semester 2018-2019 as part of the BDMA Erasmus Mundus Master program.
 It was done in collaboration with my lab mate Elena Ouro. Code available on github.
-The problem description The problem is to design and implement a graph database for publishing academic literature. Then, to use an algorithm based on pagerank to suggest reviewers for papers of the database community.">
-<meta property="og:title" content="Creating a Recommender System with a Graph DB (Neo4j)">
-<meta property="og:description" content="This work is based on a project on the Semantic Data Management course I followed in Barcelona in the summer semester 2018-2019 as part of the BDMA Erasmus Mundus Master program.
+The problem description The problem is to design and implement a graph database for publishing academic literature. Then, to use an algorithm based on pagerank to suggest reviewers for papers of the database community."><meta property="og:title" content="Creating a Recommender System with a Graph DB (Neo4j)"><meta property="og:description" content="This work is based on a project on the Semantic Data Management course I followed in Barcelona in the summer semester 2018-2019 as part of the BDMA Erasmus Mundus Master program.
 It was done in collaboration with my lab mate Elena Ouro. Code available on github.
-The problem description The problem is to design and implement a graph database for publishing academic literature. Then, to use an algorithm based on pagerank to suggest reviewers for papers of the database community.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://iprapas.github.io/posts/neo4j-recommender/"><meta property="article:section" content="posts">
-<meta property="article:published_time" content="2019-02-20T00:00:00+00:00">
-<meta property="article:modified_time" content="2019-02-20T00:00:00+00:00">
-<base href=https://iprapas.github.io/posts/neo4j-recommender/>
-<title>
-Creating a Recommender System with a Graph DB (Neo4j) · Ioannis Prapas
-</title>
-<link rel=canonical href=https://iprapas.github.io/posts/neo4j-recommender/>
-<link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel=stylesheet>
-<link rel=stylesheet href=https://use.fontawesome.com/releases/v5.13.0/css/all.css integrity=sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V crossorigin=anonymous>
-<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin=anonymous>
-<link rel=stylesheet href=https://iprapas.github.io/css/coder.min.a4f332213a21ce8eb521670c614470c58923aaaf385e2a73982c31dd7642decb.css integrity="sha256-pPMyITohzo61IWcMYURwxYkjqq84XipzmCwx3XZC3ss=" crossorigin=anonymous media=screen>
-<link rel=icon type=image/png href=https://iprapas.github.io/images/favicon.png sizes=32x32>
-<link rel=icon type=image/png href=https://iprapas.github.io/images/favicon.png sizes=16x16>
-<meta name=generator content="Hugo 0.91.2">
-</head>
-<body class=colorscheme-light>
-<main class=wrapper>
-<nav class=navigation>
-<section class=container>
-<a class=navigation-title href=https://iprapas.github.io/>
-Ioannis Prapas
-</a>
+The problem description The problem is to design and implement a graph database for publishing academic literature. Then, to use an algorithm based on pagerank to suggest reviewers for papers of the database community."><meta property="og:type" content="article"><meta property="og:url" content="https://iprapas.github.io/posts/neo4j-recommender/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2019-02-20T00:00:00+00:00"><meta property="article:modified_time" content="2019-02-20T00:00:00+00:00"><base href=https://iprapas.github.io/posts/neo4j-recommender/><title>Creating a Recommender System with a Graph DB (Neo4j) · Ioannis Prapas</title><link rel=canonical href=https://iprapas.github.io/posts/neo4j-recommender/><link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel=stylesheet><link rel=stylesheet href=https://use.fontawesome.com/releases/v5.13.0/css/all.css integrity=sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin=anonymous><link rel=stylesheet href=https://iprapas.github.io/css/coder.min.a4f332213a21ce8eb521670c614470c58923aaaf385e2a73982c31dd7642decb.css integrity="sha256-pPMyITohzo61IWcMYURwxYkjqq84XipzmCwx3XZC3ss=" crossorigin=anonymous media=screen><link rel=icon type=image/png href=https://iprapas.github.io/images/favicon.png sizes=32x32><link rel=icon type=image/png href=https://iprapas.github.io/images/favicon.png sizes=16x16><meta name=generator content="Hugo 0.97.3"></head><body class=colorscheme-light><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=https://iprapas.github.io/>Ioannis Prapas</a>
 <input type=checkbox id=menu-toggle>
-<label class="menu-button float-right" for=menu-toggle><i class="fas fa-bars"></i></label>
-<ul class=navigation-list>
-<li class=navigation-item>
-<a class=navigation-link href=https://iprapas.github.io/>Home</a>
-</li>
-<li class=navigation-item>
-<a class=navigation-link href=https://iprapas.github.io/posts/>Blog</a>
-</li>
-<li class=navigation-item>
-<a class=navigation-link href=https://iprapas.github.io/links/>Links</a>
-</li>
-<li class=navigation-item>
-<a class=navigation-link href=https://iprapas.github.io/about/>About</a>
-</li>
-</ul>
-</section>
-</nav>
-<div class=content>
-<section class="container post">
-<article>
-<header>
-<div class=post-title>
-<h1 class=title>Creating a Recommender System with a Graph DB (Neo4j)</h1>
-</div>
-<div class=post-meta>
-<div class=date>
-<span class=posted-on>
-<i class="fas fa-calendar"></i>
-<time datetime=2019-02-20T00:00:00Z>
-February 20, 2019
-</time>
-</span>
-<span class=reading-time>
-<i class="fas fa-clock"></i>
-6-minute read
-</span>
-</div>
-<div class=categories>
-<i class="fas fa-folder"></i>
+<label class="menu-button float-right" for=menu-toggle><i class="fas fa-bars"></i></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=https://iprapas.github.io/>Home</a></li><li class=navigation-item><a class=navigation-link href=https://iprapas.github.io/posts/>Blog</a></li><li class=navigation-item><a class=navigation-link href=https://iprapas.github.io/links/>Links</a></li><li class=navigation-item><a class=navigation-link href=https://iprapas.github.io/about/>About</a></li></ul></section></nav><div class=content><section class="container post"><article><header><div class=post-title><h1 class=title>Creating a Recommender System with a Graph DB (Neo4j)</h1></div><div class=post-meta><div class=date><span class=posted-on><i class="fas fa-calendar"></i>
+<time datetime=2019-02-20T00:00:00Z>February 20, 2019</time></span>
+<span class=reading-time><i class="fas fa-clock"></i>
+6-minute read</span></div><div class=categories><i class="fas fa-folder"></i>
 <a href=https://iprapas.github.io/categories/graph-db/>Graph DB</a>
 <span class=separator>•</span>
 <a href=https://iprapas.github.io/categories/bdma-project/>BDMA Project</a>
 <span class=separator>•</span>
-<a href=https://iprapas.github.io/categories/recommender/>Recommender</a></div>
-<div class=tags>
-<i class="fas fa-tag"></i>
+<a href=https://iprapas.github.io/categories/recommender/>Recommender</a></div><div class=tags><i class="fas fa-tag"></i>
 <a href=https://iprapas.github.io/tags/neo4j/>Neo4j</a>
 <span class=separator>•</span>
 <a href=https://iprapas.github.io/tags/cypher/>Cypher</a>
 <span class=separator>•</span>
 <a href=https://iprapas.github.io/tags/python/>python</a>
 <span class=separator>•</span>
-<a href=https://iprapas.github.io/tags/intermediate/>intermediate</a></div>
-</div>
-</header>
-<div>
-<p>This work is based on a project on the Semantic Data Management course I followed in Barcelona in the summer semester 2018-2019 as part of the <a href=https://bdma.ulb.ac.be/bdma/>BDMA</a> Erasmus Mundus Master program.</p>
-<p>It was done in collaboration with my lab mate <a href=https://github.com/elenaouro>Elena Ouro</a>. Code available on <a href=https://github.com/iprapas/neo4j-academia>github</a>.</p>
-<h2 id=the-problem-description>The problem description</h2>
-<p>The problem is to design and implement a graph database for publishing academic literature. Then, to use an algorithm based on pagerank to suggest reviewers for papers of the database community.</p>
-<h2 id=model-design>Model design</h2>
-<p>To start with, we designed the data model of the property graph.</p>
-<p><img src=https://iprapas.github.io/blog/neo4j-recommender/graph_model.png alt=graph_model></p>
-<p>Graph model schema (upper green part) and corresponding metadata of a specific instance. Purple nodes were used to extend the graph.</p>
-<h2 id=data>Data</h2>
-<p>We got data from <a href=https://dblp.uni-trier.de/xml/>dblp</a> and and converted to csv using a [converter we found on github](add link)
-that transforms the dblp file to a format that is readable by neo4j import.</p>
-<h3 id=1-data-wrangling>1. Data wrangling</h3>
-<p>Data were not ready to be imported after previous step. We had to further enhance and modify the generated CSVs with the following simplified approach:</p>
-<ul>
-<li>
-<p>First author that appears for an article is the corresponding author</p>
-</li>
-<li>
-<p>Every paper has 3 random reviewers</p>
-</li>
-<li>
-<p>Abstracts were generated as lorem ipsum&mldr; paragraphs using the python module
-lorem.</p>
-</li>
-<li>
-<p>We split the research papers in two: a) 10000 that can be cited and b) all the others
+<a href=https://iprapas.github.io/tags/intermediate/>intermediate</a></div></div></header><div><p>This work is based on a project on the Semantic Data Management course I followed in Barcelona in the summer semester 2018-2019 as part of the <a href=https://bdma.ulb.ac.be/bdma/>BDMA</a> Erasmus Mundus Master program.</p><p>It was done in collaboration with my lab mate <a href=https://github.com/elenaouro>Elena Ouro</a>. Code available on <a href=https://github.com/iprapas/neo4j-academia>github</a>.</p><h2 id=the-problem-description>The problem description</h2><p>The problem is to design and implement a graph database for publishing academic literature. Then, to use an algorithm based on pagerank to suggest reviewers for papers of the database community.</p><h2 id=model-design>Model design</h2><p>To start with, we designed the data model of the property graph.</p><p><img src=https://iprapas.github.io/blog/neo4j-recommender/graph_model.png alt=graph_model></p><p>Graph model schema (upper green part) and corresponding metadata of a specific instance. Purple nodes were used to extend the graph.</p><h2 id=data>Data</h2><p>We got data from <a href=https://dblp.uni-trier.de/xml/>dblp</a> and and converted to csv using a [converter we found on github](add link)
+that transforms the dblp file to a format that is readable by neo4j import.</p><h3 id=1-data-wrangling>1. Data wrangling</h3><p>Data were not ready to be imported after previous step. We had to further enhance and modify the generated CSVs with the following simplified approach:</p><ul><li><p>First author that appears for an article is the corresponding author</p></li><li><p>Every paper has 3 random reviewers</p></li><li><p>Abstracts were generated as lorem ipsum&mldr; paragraphs using the python module
+lorem.</p></li><li><p>We split the research papers in two: a) 10000 that can be cited and b) all the others
 that cite the first group. An article gives a random number of citations between 1 and
 100 to articles in group a. We consider the date on which an article was published to
-ensure a paper does not cite another one that was published later.</p>
-</li>
-<li>
-<p>We took keywords from <a href=https://informs.org>informs.org</a> and added them to the database
+ensure a paper does not cite another one that was published later.</p></li><li><p>We took keywords from <a href=https://informs.org>informs.org</a> and added them to the database
 community keywords mentioned. Then we randomly assigned
 some of them to all the articles. Since we knew that the existing citations were made
 in articles of specific conferences, we assigned all these articles at least one keyword
-of the db community, to obtain results for the recommender.</p>
-</li>
-<li>
-<p>As no conferences were present in our data, we changed arbitrarily some of the journals to conferences and their volumes to
-editions.</p>
-</li>
-</ul>
-<p>After this process, we have our CSVs that will be used to create our property graph.</p>
-<p><img src=https://iprapas.github.io/blog/neo4j-recommender/all_csv.png alt=all_CSV></p>
-<p>Check the <a href=https://github.com/iprapas/neo4j-academia/blob/master/notebooks>code to prepare the data</a>.</p>
-<h3 id=2-data-loading>2. Data loading</h3>
-<p>We imported the data using the <a href=https://neo4j.com/docs/operations-manual/current/tutorial/import-tool/>neo4j-admin import tool</a>, which I would say is the simpler and fastest (easy to learn and very efficient) way to load batch data into your neo4j graph for the first time. You just have to make sure that file names and headers of the CSVs match your schema and the input format of the import tool and all data will be imported very rapidly.</p>
-<p>Check the <a href=https://github.com/iprapas/neo4j-academia/blob/master/import_commands.md>actual code here</a>.</p>
-<h2 id=querying-the-graph>Querying the graph</h2>
-<h3 id=1-find-the-h-indexeshttpsenwikipediaorgwikih-index-of-the-authors-in-your-graph>1. Find the <a href=https://en.wikipedia.org/wiki/H-index>h-indexes</a> of the authors in your graph</h3>
-<p>If you have an h-index $n$, it means that you have authored at most $n$ articles with at least $n$ citations.</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>MATCH (au:author)-[:writes]-&gt;(a:article)-[cit:cited_by]-&gt;(ac:article)
-WITH au.name as author_name, a.title as title, count(*) as num_cites 
-ORDER BY num_cites desc
-WITH author_name, collect(num_cites) as list_num_cites
-WITH author_name, [x IN range(1,size(list_num_cites)) where x&lt;=list_num_cites[x-1]| [list_num_cites[x-1],x] ] as h_index_list
-RETURN author_name,h_index_list[-1][1] as h_index
-ORDER BY h_index desc
-</code></pre></div><h3 id=2-find-the-top-3-most-cited-papers-of-each-conference>2. Find the top 3 most cited papers of each conference.</h3>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>MATCH (ac:article)&lt;-[cit:cited_by]-(a:article)-[p:published_in]-&gt;(c:conference)
-WITH c, a, count(*) as cites
-ORDER BY c, cites DESC
-WITH c, collect([a,cites]) as papers
-RETURN c.name as conference_name, 
-       papers[0][0].title as paper1, papers[0][1] as num_cites1,
-       papers[1][0].title as paper2, papers[1][1] as num_cites2,
-       papers[2][0].title as paper3, papers[2][1] as num_cites3
-</code></pre></div><h3 id=3-shortest-paths-between-wil-van-der-aalst-and-5-other-authors>3. Shortest paths between Wil Van der Aalst and 5 other authors</h3>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>MATCH (start:author{name:&#39;Wil M. P. van der Aalst&#39;})
-MATCH (end:author) where end&lt;&gt;start
-WITH start, end limit 5
-CALL algo.shortestPath.stream(start, end, &#39;cost&#39;)
-YIELD nodeId, cost
-WITH start, nodeId,cost
-return algo.getNodeById(nodeId)
-</code></pre></div><p>Neo4j shows the following nice visualization of the returned graph.</p>
-<p><img src=https://iprapas.github.io/blog/neo4j-recommender/shortest_paths.png alt=shortest_paths></p>
-<h2 id=building-the-recommender>Building the recommender</h2>
-<p>The recommender was a step by step implementation, based on the project description. We will identify potential reviewers for
-the database community.</p>
-<h3 id=step-1-finddefine-db-research-communities>Step 1. Find/Define DB research communities</h3>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>// Step 1.1 - Create database community node 
-create (:community {name:&#39;db&#39;}) // run before next query
-
-// Step 1.2 - Define which keywords related to the database community
-match (c:community {name:&#39;db&#39;})
-match (kw:keyword)
-where kw.word in [&#39;data management&#39;, &#39;indexing&#39;, &#39;data modeling&#39;, &#39;big data&#39;, &#39;data processing&#39;, &#39;data storage&#39; , &#39;data querying&#39;]
-merge (kw)-[:related_to]-&gt;(c)
-</code></pre></div><h3 id=step-2-find-the-conferences-and-journals-related-to-the-database-community>Step 2. find the conferences and journals related to the database community.</h3>
-<p>Assumption: If 90% of the papers published in a conference/journal contain one of the keywords of the database community, we consider that conference/journal as related to that community.</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>// Step 2 - Find the conferences or journals that relate to the database community (90% of their articles include keywords related to the db community)
-
-match (a:article)-[:published_in]-&gt;(c1)
-with c1, c1.name as conference, count(*) as  num_papers
-where num_papers &gt; 0
-match (c1)&lt;-[:published_in]-(a:article)&lt;-[:included_in]-(kw:keyword)-[:related_to]-&gt;(com:community {name:&#39;db&#39;})
-with c1,com,conference,  num_papers, count(distinct a.title) as  num_papers_db
-with c1,com,conference, num_papers, num_papers_db, (1.0*num_papers_db/num_papers) as db_percentage
-where db_percentage &gt;=0.9
-merge (c1)-[:related_to]-&gt;(com)
-return conference, num_papers,num_papers_db, db_percentage
-</code></pre></div><h3 id=step-3-next-we-want-to-identify-the-top-papers-of-these-conferencesjournals>Step 3. Next, we want to identify the top papers of these conferences/journals.</h3>
-<p>Recommending is a ranking problem. We find the papers with the highest page rank provided the number of citations from the papers of the same community (papers in the conferences/journals of the database community). As a result, we would obtain (highlight), say, the top-100 papers of the
-conferences of the database community.</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>CALL algo.pageRank.stream(
-&#39;match (a:article)-[:published_in]-&gt;(c1)-[:related_to]-&gt;(com:community) where com.name=&#34;db&#34; return id(a) as id&#39;, 
-&#39;match (com1:community)&lt;-[:related_to]-(c1)&lt;-[:published_in]-(a1:article)-[cit:cited_by]-&gt;(a2:article)-[:published_in]-&gt;(c2)-[:related_to]-&gt;(com2:community) where com1.name=&#34;db&#34; and com2.name=&#34;db&#34; return id(a1) as source, id(a2) as target&#39;,{graph:&#39;cypher&#39;})
-YIELD nodeId, score
-WITH algo.getNodeById(nodeId) AS a,score
-ORDER BY score DESC
-match (com:community {name:&#39;db&#39;})
-merge (a)-[:related_to]-&gt;(com)
-return a.title, score
-limit 100
-</code></pre></div><h3 id=step-4-return-recommendations>Step 4. Return recommendations</h3>
-<p>An author of any of these top-100 papers is automatically considered a potential good match to review database papers. In addition, we want to identify
+of the db community, to obtain results for the recommender.</p></li><li><p>As no conferences were present in our data, we changed arbitrarily some of the journals to conferences and their volumes to
+editions.</p></li></ul><p>After this process, we have our CSVs that will be used to create our property graph.</p><p><img src=https://iprapas.github.io/blog/neo4j-recommender/all_csv.png alt=all_CSV></p><p>Check the <a href=https://github.com/iprapas/neo4j-academia/blob/master/notebooks>code to prepare the data</a>.</p><h3 id=2-data-loading>2. Data loading</h3><p>We imported the data using the <a href=https://neo4j.com/docs/operations-manual/current/tutorial/import-tool/>neo4j-admin import tool</a>, which I would say is the simpler and fastest (easy to learn and very efficient) way to load batch data into your neo4j graph for the first time. You just have to make sure that file names and headers of the CSVs match your schema and the input format of the import tool and all data will be imported very rapidly.</p><p>Check the <a href=https://github.com/iprapas/neo4j-academia/blob/master/import_commands.md>actual code here</a>.</p><h2 id=querying-the-graph>Querying the graph</h2><h3 id=1-find-the-h-indexeshttpsenwikipediaorgwikih-index-of-the-authors-in-your-graph>1. Find the <a href=https://en.wikipedia.org/wiki/H-index>h-indexes</a> of the authors in your graph</h3><p>If you have an h-index $n$, it means that you have authored at most $n$ articles with at least $n$ citations.</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>MATCH (au:author)-[:writes]-&gt;(a:article)-[cit:cited_by]-&gt;(ac:article)
+</span></span><span style=display:flex><span>WITH au.name as author_name, a.title as title, count(*) as num_cites 
+</span></span><span style=display:flex><span>ORDER BY num_cites desc
+</span></span><span style=display:flex><span>WITH author_name, collect(num_cites) as list_num_cites
+</span></span><span style=display:flex><span>WITH author_name, [x IN range(1,size(list_num_cites)) where x&lt;=list_num_cites[x-1]| [list_num_cites[x-1],x] ] as h_index_list
+</span></span><span style=display:flex><span>RETURN author_name,h_index_list[-1][1] as h_index
+</span></span><span style=display:flex><span>ORDER BY h_index desc
+</span></span></code></pre></div><h3 id=2-find-the-top-3-most-cited-papers-of-each-conference>2. Find the top 3 most cited papers of each conference.</h3><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>MATCH (ac:article)&lt;-[cit:cited_by]-(a:article)-[p:published_in]-&gt;(c:conference)
+</span></span><span style=display:flex><span>WITH c, a, count(*) as cites
+</span></span><span style=display:flex><span>ORDER BY c, cites DESC
+</span></span><span style=display:flex><span>WITH c, collect([a,cites]) as papers
+</span></span><span style=display:flex><span>RETURN c.name as conference_name, 
+</span></span><span style=display:flex><span>       papers[0][0].title as paper1, papers[0][1] as num_cites1,
+</span></span><span style=display:flex><span>       papers[1][0].title as paper2, papers[1][1] as num_cites2,
+</span></span><span style=display:flex><span>       papers[2][0].title as paper3, papers[2][1] as num_cites3
+</span></span></code></pre></div><h3 id=3-shortest-paths-between-wil-van-der-aalst-and-5-other-authors>3. Shortest paths between Wil Van der Aalst and 5 other authors</h3><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>MATCH (start:author{name:&#39;Wil M. P. van der Aalst&#39;})
+</span></span><span style=display:flex><span>MATCH (end:author) where end&lt;&gt;start
+</span></span><span style=display:flex><span>WITH start, end limit 5
+</span></span><span style=display:flex><span>CALL algo.shortestPath.stream(start, end, &#39;cost&#39;)
+</span></span><span style=display:flex><span>YIELD nodeId, cost
+</span></span><span style=display:flex><span>WITH start, nodeId,cost
+</span></span><span style=display:flex><span>return algo.getNodeById(nodeId)
+</span></span></code></pre></div><p>Neo4j shows the following nice visualization of the returned graph.</p><p><img src=https://iprapas.github.io/blog/neo4j-recommender/shortest_paths.png alt=shortest_paths></p><h2 id=building-the-recommender>Building the recommender</h2><p>The recommender was a step by step implementation, based on the project description. We will identify potential reviewers for
+the database community.</p><h3 id=step-1-finddefine-db-research-communities>Step 1. Find/Define DB research communities</h3><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>// Step 1.1 - Create database community node 
+</span></span><span style=display:flex><span>create (:community {name:&#39;db&#39;}) // run before next query
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>// Step 1.2 - Define which keywords related to the database community
+</span></span><span style=display:flex><span>match (c:community {name:&#39;db&#39;})
+</span></span><span style=display:flex><span>match (kw:keyword)
+</span></span><span style=display:flex><span>where kw.word in [&#39;data management&#39;, &#39;indexing&#39;, &#39;data modeling&#39;, &#39;big data&#39;, &#39;data processing&#39;, &#39;data storage&#39; , &#39;data querying&#39;]
+</span></span><span style=display:flex><span>merge (kw)-[:related_to]-&gt;(c)
+</span></span></code></pre></div><h3 id=step-2-find-the-conferences-and-journals-related-to-the-database-community>Step 2. find the conferences and journals related to the database community.</h3><p>Assumption: If 90% of the papers published in a conference/journal contain one of the keywords of the database community, we consider that conference/journal as related to that community.</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>// Step 2 - Find the conferences or journals that relate to the database community (90% of their articles include keywords related to the db community)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>match (a:article)-[:published_in]-&gt;(c1)
+</span></span><span style=display:flex><span>with c1, c1.name as conference, count(*) as  num_papers
+</span></span><span style=display:flex><span>where num_papers &gt; 0
+</span></span><span style=display:flex><span>match (c1)&lt;-[:published_in]-(a:article)&lt;-[:included_in]-(kw:keyword)-[:related_to]-&gt;(com:community {name:&#39;db&#39;})
+</span></span><span style=display:flex><span>with c1,com,conference,  num_papers, count(distinct a.title) as  num_papers_db
+</span></span><span style=display:flex><span>with c1,com,conference, num_papers, num_papers_db, (1.0*num_papers_db/num_papers) as db_percentage
+</span></span><span style=display:flex><span>where db_percentage &gt;=0.9
+</span></span><span style=display:flex><span>merge (c1)-[:related_to]-&gt;(com)
+</span></span><span style=display:flex><span>return conference, num_papers,num_papers_db, db_percentage
+</span></span></code></pre></div><h3 id=step-3-next-we-want-to-identify-the-top-papers-of-these-conferencesjournals>Step 3. Next, we want to identify the top papers of these conferences/journals.</h3><p>Recommending is a ranking problem. We find the papers with the highest page rank provided the number of citations from the papers of the same community (papers in the conferences/journals of the database community). As a result, we would obtain (highlight), say, the top-100 papers of the
+conferences of the database community.</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>CALL algo.pageRank.stream(
+</span></span><span style=display:flex><span>&#39;match (a:article)-[:published_in]-&gt;(c1)-[:related_to]-&gt;(com:community) where com.name=&#34;db&#34; return id(a) as id&#39;, 
+</span></span><span style=display:flex><span>&#39;match (com1:community)&lt;-[:related_to]-(c1)&lt;-[:published_in]-(a1:article)-[cit:cited_by]-&gt;(a2:article)-[:published_in]-&gt;(c2)-[:related_to]-&gt;(com2:community) where com1.name=&#34;db&#34; and com2.name=&#34;db&#34; return id(a1) as source, id(a2) as target&#39;,{graph:&#39;cypher&#39;})
+</span></span><span style=display:flex><span>YIELD nodeId, score
+</span></span><span style=display:flex><span>WITH algo.getNodeById(nodeId) AS a,score
+</span></span><span style=display:flex><span>ORDER BY score DESC
+</span></span><span style=display:flex><span>match (com:community {name:&#39;db&#39;})
+</span></span><span style=display:flex><span>merge (a)-[:related_to]-&gt;(com)
+</span></span><span style=display:flex><span>return a.title, score
+</span></span><span style=display:flex><span>limit 100
+</span></span></code></pre></div><h3 id=step-4-return-recommendations>Step 4. Return recommendations</h3><p>An author of any of these top-100 papers is automatically considered a potential good match to review database papers. In addition, we want to identify
 gurus, i.e., very reputated authors that would be able to review for top conferences.
 We identify gurus as the authors of, at least, two papers among the
-top-100 identified.</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>match (au:author)-[:writes]-&gt;(:article)-[:related_to]-&gt;(com:community {name:&#39;db&#39;})
-with au, count(*) as  num
-with au, au.name as author_name, num as num_influential_papers, case when num &gt;=2 then &#39;guru&#39; else &#39;reviewer&#39; end as reviewer_type
-merge (au)-[:related_to {type:reviewer_type}]-&gt;(com)
-return author_name, num_influential_papers, reviewer_type
-order by num_influential_papers desc
-</code></pre></div><h2 id=ending-note>Ending Note</h2>
-<p>In this article, we&rsquo;ve seen</p>
-<ul>
-<li>
-<p>the design of a graph model,</p>
-</li>
-<li>
-<p>how to wrangle data for importing it to neo4j,</p>
-</li>
-<li>
-<p>how to perform queries in Cypher</p>
-</li>
-<li>
-<p>and how to build a simple reviewer recommender based on graphs and pagerank.</p>
-</li>
-</ul>
-<p><em>Take-home message</em>: Graph Databases are efficient for navigating through relations and make query-writing natural. They are the natural choice for representing connected data, analyzing their interactions and performing Graph Analytics (shortest paths, pagerank, betweeness, etc) on them.</p>
-</div>
-<footer>
-<p>For any questions, please leave a comment or send me an <a href=mailto:iprapas+blog@protonmail.com>email</a>. If you liked the post, don't forget to subscribe to the <a href=https://forms.gle/kjeq3ajUQaJ4kemu7> newsletter</a> for a new post every now and then.</p>
-<h3>See Also</h3>
-<ul>
-<li><a href=https://iprapas.github.io/posts/learndatasci-geospatial-pt1/>Intro to geospatial data analysis with Python - learndatasci.com</a></li>
-<li><a href=https://iprapas.github.io/posts/learndatasci-dim-reduction/>Applied Dimensionality Reduction - learndatasci.com</a></li>
-<li><a href=https://iprapas.github.io/posts/python-virtualenv/>Easiest way to use Python virtual environments</a></li>
-<li><a href=https://iprapas.github.io/posts/remote-jupyter-notebook/>Remote Jupyter notebook locally over ssh gate</a></li>
-<li><a href=https://iprapas.github.io/posts/kaggle-plasticc/>How I reached top 2% in my first kaggle competition</a></li>
-</ul>
-<script src=https://utteranc.es/client.js repo=iprapas/iprapas.github.io issue-term=pathname theme=preferred-color-scheme crossorigin=anonymous async></script>
-</footer>
-</article>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+top-100 identified.</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>match (au:author)-[:writes]-&gt;(:article)-[:related_to]-&gt;(com:community {name:&#39;db&#39;})
+</span></span><span style=display:flex><span>with au, count(*) as  num
+</span></span><span style=display:flex><span>with au, au.name as author_name, num as num_influential_papers, case when num &gt;=2 then &#39;guru&#39; else &#39;reviewer&#39; end as reviewer_type
+</span></span><span style=display:flex><span>merge (au)-[:related_to {type:reviewer_type}]-&gt;(com)
+</span></span><span style=display:flex><span>return author_name, num_influential_papers, reviewer_type
+</span></span><span style=display:flex><span>order by num_influential_papers desc
+</span></span></code></pre></div><h2 id=ending-note>Ending Note</h2><p>In this article, we&rsquo;ve seen</p><ul><li><p>the design of a graph model,</p></li><li><p>how to wrangle data for importing it to neo4j,</p></li><li><p>how to perform queries in Cypher</p></li><li><p>and how to build a simple reviewer recommender based on graphs and pagerank.</p></li></ul><p><em>Take-home message</em>: Graph Databases are efficient for navigating through relations and make query-writing natural. They are the natural choice for representing connected data, analyzing their interactions and performing Graph Analytics (shortest paths, pagerank, betweeness, etc) on them.</p></div><footer><p>For any questions, please leave a comment or send me an <a href=mailto:iprapas+blog@protonmail.com>email</a>. If you liked the post, don't forget to subscribe to the <a href=https://forms.gle/kjeq3ajUQaJ4kemu7>newsletter</a> for a new post every now and then.</p><h3>See Also</h3><ul><li><a href=https://iprapas.github.io/posts/learndatasci-geospatial-pt1/>Intro to geospatial data analysis with Python - learndatasci.com</a></li><li><a href=https://iprapas.github.io/posts/learndatasci-dim-reduction/>Applied Dimensionality Reduction - learndatasci.com</a></li><li><a href=https://iprapas.github.io/posts/python-virtualenv/>Easiest way to use Python virtual environments</a></li><li><a href=https://iprapas.github.io/posts/remote-jupyter-notebook/>Remote Jupyter notebook locally over ssh gate</a></li><li><a href=https://iprapas.github.io/posts/kaggle-plasticc/>How I reached top 2% in my first kaggle competition</a></li></ul><script src=https://utteranc.es/client.js repo=iprapas/iprapas.github.io issue-term=pathname theme=preferred-color-scheme crossorigin=anonymous async></script></footer></article><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script type=text/javascript async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script>
 <script src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/startup.js id=MathJax-script></script>
-<script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],processEscapes:!0,processEnvironments:!0},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}}</script>
-</section>
-</div>
-<footer class=footer>
-<section class=container>
-<p>Subscribe to the <a href=https://forms.gle/kjeq3ajUQaJ4kemu7> newsletter</a> for a new post every now and then.</p>
-©
-2021
+<script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],processEscapes:!0,processEnvironments:!0},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]}}</script></section></div><footer class=footer><section class=container><p>Subscribe to the <a href=https://forms.gle/kjeq3ajUQaJ4kemu7>newsletter</a> for a new post every now and then.</p>©
+2022
 Ioannis Prapas
 ·
-Powered by <a href=https://gohugo.io/>Hugo</a> & <a href=https://github.com/luizdepra/hugo-coder/>Coder</a>.
-</section>
-</footer>
-</main>
-<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-93894885-1','auto'),ga('send','pageview'))</script>
-</body>
-</html>
+Powered by <a href=https://gohugo.io/>Hugo</a> & <a href=https://github.com/luizdepra/hugo-coder/>Coder</a>.</section></footer></main><script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(e,o,i,a,t,n,s){e.GoogleAnalyticsObject=t,e[t]=e[t]||function(){(e[t].q=e[t].q||[]).push(arguments)},e[t].l=1*new Date,n=o.createElement(i),s=o.getElementsByTagName(i)[0],n.async=1,n.src=a,s.parentNode.insertBefore(n,s)}(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-93894885-1","auto"),ga("send","pageview"))</script></body></html>
