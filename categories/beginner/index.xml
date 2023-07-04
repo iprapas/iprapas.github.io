@@ -4,7 +4,8 @@ What are virtual environments Instead of adding new python packages to your syst
 Me: I want a nice interface to run python code in a remote machine.
 Jupyter Notebook: I am here for you.
 SSH Gate: I&amp;rsquo;ll make things trickier.
-Well, here is the guide to setup a jupyter notebook server in a remote machine and connect to it, even if you need to pass through an ssh gate.</description></item><item><title>Spam Classification with Spark MLLib</title><link>https://iprapas.github.io/posts/mllib-classification/</link><pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate><guid>https://iprapas.github.io/posts/mllib-classification/</guid><description>Disclaimer: This blog post will present my solution to an exercise of the Scalable Data Science offered by TU Berlin in winter semester 2019-2020.
+Well, here is the guide to setup a jupyter notebook server in a remote machine and connect to it, even if you need to pass through an ssh gate.
+This guide is for UNIX-like systems and has been tested on Ubuntu 18.</description></item><item><title>Spam Classification with Spark MLLib</title><link>https://iprapas.github.io/posts/mllib-classification/</link><pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate><guid>https://iprapas.github.io/posts/mllib-classification/</guid><description>Disclaimer: This blog post will present my solution to an exercise of the Scalable Data Science offered by TU Berlin in winter semester 2019-2020.
 Introduction In this exercise, we had to learn a model to classify spam, nospam SMS messages. We were given the SMS Spam Collection Data Set, split in 4 files:
 training_spam.txt
 training_nospam.txt
