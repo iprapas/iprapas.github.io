@@ -1,7 +1,7 @@
 +++
 date = "2021-12-01"
 draft = false
-title = "Deep Learning for Daily Wildfire Danger Forecasting (NeurIPS 2021)"
+title = "Presenting work on Daily Wildfire Danger Forecasting at NeurIPS 2021"
 toc = true
 categories = ["Deep Learning", "Research", "Publication"]
 tags = ["Deep Learning", "research", "NeurIPS", "poster"]

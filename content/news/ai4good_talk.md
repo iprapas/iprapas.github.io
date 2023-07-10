@@ -1,7 +1,7 @@
 +++
 date = "2023-07-01"
 draft = false
-title = "AI for Good Workshop, Wildfire Forecasting at Different Spatiotemporal Scales"
+title = "Presenting in ELLIS-hosted AI for Good Workshop"
 toc = true
 categories = ["Deep Learning", "Research", "Wildfires", "Talk"]
 tags = ["Deep Learning", "wildfires", "research", "ai4good", "talk"]

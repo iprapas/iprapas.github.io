@@ -1,7 +1,7 @@
 +++
 date = "2021-07-20"
 draft = false
-title = "Intro to geospatial data analysis with Python - learndatasci.com"
+title = "Blog post about Intro to Geospatial Data Analysis with Python on learndatasci.com"
 tags = ["python", "data science", "geospatial", "shapely", "geopandas"]
 categories = ["Data Science", "Tutorial", "Geospatial"]
 toc = true

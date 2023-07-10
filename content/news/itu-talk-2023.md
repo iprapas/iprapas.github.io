@@ -1,7 +1,7 @@
 +++
 date = "2023-04-01"
 draft = false
-title = "Webinar: Fighting wildfires with AI-powered insights"
+title = "Presenting in webinar about Fighting wildfires with AI-powered insights"
 toc = true
 categories = ["Deep Learning", "Wildfires", "Talk"]
 tags = ["Deep Learning", "research","talk", "webinar", "wildfires", "poster"]

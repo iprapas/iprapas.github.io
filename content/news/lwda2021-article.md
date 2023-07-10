@@ -1,7 +1,7 @@
 +++
 date = "2021-08-30"
 draft = false
-title = "Fresh publication: Continuous Deployment of Deep Learning models"
+title = "Work on Continuous Deployment of Deep Learning models presented at LWDA 2021"
 tags = ["publication", "research", "deep learning"]
 categories = ["Data Science", "Data Engineering", "Model Deployment", "Deep Learning"]
 toc = true
