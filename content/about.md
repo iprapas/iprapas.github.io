@@ -9,3 +9,11 @@ Jokes aside, this blog is meant to log any findings in my day-to-day use of tech
 
 In case you want to reach me, feel free to drop me [an email](mailto:iprapas+blog@protonmail.com).
 
+## Links I like
+
+* [Good music (John Frusciante - Before The Beginning)](https://www.youtube.com/watch?v=GRe19mPhZvo)
+
+* [Inspiring speech (Carl Sagan - Pale Blue Dot)](https://www.youtube.com/watch?v=GO5FwsblpT8)
+
+* [Great article (Wait But Why - Artificial Intelligence Revolution)](http://waitbutwhy.com/2015/01/artificial-intelligence-revolution-1.html) 
+
