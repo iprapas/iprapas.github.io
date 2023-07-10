@@ -28,36 +28,36 @@ For a full updated list, please refer to my [scholar profile](https://scholar.go
 
 ## Datasets
 
-* [FireCube](https://zenodo.org/record/6475592): A Daily Datacube for the Modeling and Analysis of Wildfires in Greece
+* [FireCube](https://zenodo.org/record/6475592): A Daily Datacube for the Modeling and Analysis of Wildfires in Greece.
 
-* [SeasFire Cube](https://zenodo.org/record/8055879): A Global Dataset for Seasonal Fire Modeling in the Earth System
+* [SeasFire Cube](https://zenodo.org/record/8055879): A Global Dataset for Seasonal Fire Modeling in the Earth System.
 
-* [Mesogeos](https://orion-ai-lab.github.io/mesogeos/): A multi-purpose dataset for data-driven wildfire modeling in the Mediterranean
+* [Mesogeos](https://orion-ai-lab.github.io/mesogeos/): A multi-purpose dataset for data-driven wildfire modeling in the Mediterranean.
 
 
 ## Presentations (invited talks, conferences, posters, etc)
 
 * Wildfire danger forecasting at different spatio-temporal scales. [AI for Good 2023, ELLIS ML Workshop "The role of AI in tackling climate change and its impacts: from science to early warning"](https://aiforgood.itu.int/event/the-role-of-ai-in-tackling-climate-change-and-its-impacts-from-science-to-early-warning/), Geneva, Switzerland (Invited Talk). [slides](./)
 
-* Earth System Deep Learning towards a Global Digital Twin of Wildfires. EGU 2023, Vienna, Austria (Oral Presentation). [slides](./) | [abstract](./)
+* Earth System Deep Learning towards a Global Digital Twin of Wildfires. EGU 2023, Vienna, Austria (Oral Presentation). [presentation](./) | [abstract](./)
 
-* Deep learning for wildfire danger forecasting at different spatio-temporal scales. ITU Webinar "Fighting wildfires with AI-powered insights" April 19th, 2023 (Invited Talk) [Presentation](https://www.itu.int/en/ITU-T/webinars/20230419/Documents/2_Ioannis%20Prapas.pdf) | [Recording](https://itu.zoom.us/rec/share/qD4WfX_aSp2pYGsCGFszpRs17AC1e9nzEWLv2hYg9EdKpMauinKF25z10YRh6u_K.LU3NnjFs1RgmVwMY?startTime=1681905677000)
+* Deep learning for wildfire danger forecasting at different spatio-temporal scales. ITU Webinar "Fighting wildfires with AI-powered insights" April 19th, 2023 (Invited Talk) [presentation](https://www.itu.int/en/ITU-T/webinars/20230419/Documents/2_Ioannis%20Prapas.pdf) | [recording](https://itu.zoom.us/rec/share/qD4WfX_aSp2pYGsCGFszpRs17AC1e9nzEWLv2hYg9EdKpMauinKF25z10YRh6u_K.LU3NnjFs1RgmVwMY?startTime=1681905677000)
 
 * [AI4EO ESA Φ-Lab Workshop on AI for Natural Hazard Management](https://seasfire.hua.gr/2023/05/18/seasfire-at-esa-ai4eo-workshop-on-natural-hazard-management/), ESRIN Frascatti Italy, May 10th 2023 (Co-organized by me).
 
 	* Deep Learning for Landslide Detection (Oral Presentation). [presentation](https://drive.google.com/file/d/1H82hzvUIAjQF0QF6NFJpXcJaj7fYqS9V/view?usp=sharing)
 	
-	* Deep Learning for Wildfire Danger Forecasting at Different Spatiotemporal Scales. [presentation](https://drive.google.com/file/d/1d7IRdHKiAGS5fVuns-NbWla0ICj5upaX/view?usp=sharing)
+	* Deep Learning for Wildfire Danger Forecasting at Different Spatiotemporal Scales (Oral Presentation). [presentation](https://drive.google.com/file/d/1d7IRdHKiAGS5fVuns-NbWla0ICj5upaX/view?usp=sharing)
 
 * Earth System Deep Learning for Global Wildfire Forecasting. ML4ESOP, ECMWF Reading, United Kingdom (Poster presentation). [poster](/files/talk_ECMWF-ESA-WS_Papoutsis_Prapas.pdf)
 
-* Self Supervised Learning on SAR Data For Change Detection. NASA Challenge, FDL USA, September 15th 2022. [presentation](https://youtu.be/K_U37sRLoqU?t=1913)
+* Self Supervised Learning on SAR Data For Change Detection. NASA Challenge, FDL USA, September 15th 2022 (Online Presentation). [presentation](https://youtu.be/K_U37sRLoqU?t=1913)
 
 * Deep Learning Methods for Daily Wildfire Danger Forecasting. Living Planet Symposium 2022, Bonn, Germany (Poster Presentation). [poster](/files/lps2022_poster_wildfire.pdf)
 
 * Deep Learning Methods for Daily Wildfire Danger Forecasting. Poster in hadr.ai Workshop, NeurIPS 2021 (Online Presentation). [poster](/files/hadrai_nips2021_poster.pdf)
 
-* Continuous Training and Deployment of Deep Learning Models. Presented in LWDA workshop 2021 (Online Presentation). [preprint](/blog/lwda2021-article/dl_continuous_deployment.pdf) | [paper](https://link.springer.com/article/10.1007/s13222-021-00386-8) | [presentation](/files/lwda2021_presentation.pptx)
+* Continuous Training and Deployment of Deep Learning Models. Presented in LWDA workshop 2021 (Online Presentation. [preprint](/blog/lwda2021-article/dl_continuous_deployment.pdf) | [paper](https://link.springer.com/article/10.1007/s13222-021-00386-8) | [presentation](/files/lwda2021_presentation.pptx)
 
 ## Tutorials
 
