@@ -9,9 +9,9 @@ My research is on the use of Deep Learning methods for spatiotemporal earth obse
 
 For a full updated list, please refer to my [scholar profile](https://scholar.google.com/citations?user=tEF8OxIAAAAJ). For each paper, first authors are presented in bold.
 
-* **Prapas, I.**, Bountos, N. I., Kondylatos, S., Michail, D., Camps-Valls, G., & Papoutsis, I. (2023). TeleViT: Teleconnection-driven Transformers Improve Subseasonal to Seasonal Wildfire Forecasting. arXiv preprint arXiv:2306.10940. (under review) [html](https://arxiv.org/abs/2306.10940) [code](https://github.com/orion-ai-lab/televit)
+* **Prapas, I.**, Bountos, N. I., Kondylatos, S., Michail, D., Camps-Valls, G., & Papoutsis, I. (2023). TeleViT: Teleconnection-driven Transformers Improve Subseasonal to Seasonal Wildfire Forecasting. arXiv preprint arXiv:2306.10940 (under review). [html](https://arxiv.org/abs/2306.10940) | [code](https://github.com/orion-ai-lab/televit)
 
-* **Kondylatos, S.**, Prapas, I., Camps-Valls, G., & Papoutsis, I. (2023). Mesogeos: A multi-purpose dataset for data-driven wildfire modeling in the Mediterranean. arXiv preprint arXiv:2306.05144. (under review) [html](https://arxiv.org/abs/2306.05144) | [code](https://github.com/orion-ai-lab/mesogeos)
+* **Kondylatos, S.**, Prapas, I., Camps-Valls, G., & Papoutsis, I. (2023). Mesogeos: A multi-purpose dataset for data-driven wildfire modeling in the Mediterranean. arXiv preprint arXiv:2306.05144 (under review). [html](https://arxiv.org/abs/2306.05144) | [code](https://github.com/orion-ai-lab/mesogeos)
 
 * **Kondylatos, S., Prapas, I.**, Ronco, M., Papoutsis, I., Camps-Valls, G., Piles, M., ... & Carvalhais, N. (2022). Wildfire danger prediction and understanding with Deep Learning. Geophysical Research Letters, 49(17), e2022GL099368. [html](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2022GL099368) | [code](https://github.com/Orion-AI-Lab/wildfire_forecasting)
 
@@ -21,9 +21,9 @@ For a full updated list, please refer to my [scholar profile](https://scholar.go
 
 * **Prapas, I., Kondylatos, S.**, Papoutsis, I., Camps-Valls, G., Ronco, M., Fernández-Torres, M. Á., ... & Carvalhais, N. (2021). Deep learning methods for daily wildfire danger forecasting. arXiv preprint arXiv:2111.02736. *Presented at hadr.ai workshop in NeurIPS 2021.*  [html](https://arxiv.org/abs/2111.02736)
 
-* **Prapas, I.**, Derakhshan, B., Mahdiraji, A. R., & Markl, V. (2021). Continuous training and deployment of deep learning models. Datenbank-Spektrum, 21(3), 203-212. *Presented at LWDA 2021* [html](https://link.springer.com/article/10.1007/s13222-021-00386-8)
+* **Prapas, I.**, Derakhshan, B., Mahdiraji, A. R., & Markl, V. (2021). Continuous training and deployment of deep learning models. Datenbank-Spektrum, 21(3), 203-212. *Presented at LWDA 2021*. [html](https://link.springer.com/article/10.1007/s13222-021-00386-8)
 
-* **Prapas, I.**, Paliouras, G., Artikis, A., & Baskiotis, N. (2018, July). Towards human activity reasoning with computational logic and deep learning. In Proceedings of the 10th Hellenic Conference on Artificial Intelligence (pp. 1-4). ([preprint](/files/setn_2018_preprint.pdf) | [paper](https://dl.acm.org/doi/pdf/10.1145/3200947.3201051))
+* **Prapas, I.**, Paliouras, G., Artikis, A., & Baskiotis, N. (2018, July). Towards human activity reasoning with computational logic and deep learning. In Proceedings of the 10th Hellenic Conference on Artificial Intelligence (pp. 1-4). [preprint](/files/setn_2018_preprint.pdf) | [paper](https://dl.acm.org/doi/pdf/10.1145/3200947.3201051)
 
 
 ## Datasets
@@ -39,11 +39,11 @@ For a full updated list, please refer to my [scholar profile](https://scholar.go
 
 * Wildfire danger forecasting at different spatio-temporal scales. [AI for Good 2023, ELLIS ML Workshop "The role of AI in tackling climate change and its impacts: from science to early warning"](https://aiforgood.itu.int/event/the-role-of-ai-in-tackling-climate-change-and-its-impacts-from-science-to-early-warning/), Geneva, Switzerland (Invited Talk). [slides](./)
 
-* Earth System Deep Learning towards a Global Digital Twin of Wildfires. EGU 2023, Vienna, Austria (Oral Presentation). [slides](./) [abstract](./)
+* Earth System Deep Learning towards a Global Digital Twin of Wildfires. EGU 2023, Vienna, Austria (Oral Presentation). [slides](./) | [abstract](./)
 
 * Deep learning for wildfire danger forecasting at different spatio-temporal scales. ITU Webinar "Fighting wildfires with AI-powered insights" April 19th, 2023 (Invited Talk) [Presentation](https://www.itu.int/en/ITU-T/webinars/20230419/Documents/2_Ioannis%20Prapas.pdf) | [Recording](https://itu.zoom.us/rec/share/qD4WfX_aSp2pYGsCGFszpRs17AC1e9nzEWLv2hYg9EdKpMauinKF25z10YRh6u_K.LU3NnjFs1RgmVwMY?startTime=1681905677000)
 
-* AI4EO ESA Φ-Lab Workshop on AI for Natural Hazard Management, ESRIN Frascatti Italy, May 10th 2023 (Co-organized by me).
+* [AI4EO ESA Φ-Lab Workshop on AI for Natural Hazard Management](https://seasfire.hua.gr/2023/05/18/seasfire-at-esa-ai4eo-workshop-on-natural-hazard-management/), ESRIN Frascatti Italy, May 10th 2023 (Co-organized by me).
 
 	* Deep Learning for Landslide Detection (Oral Presentation). [presentation](https://drive.google.com/file/d/1H82hzvUIAjQF0QF6NFJpXcJaj7fYqS9V/view?usp=sharing)
 	
@@ -57,11 +57,11 @@ For a full updated list, please refer to my [scholar profile](https://scholar.go
 
 * Deep Learning Methods for Daily Wildfire Danger Forecasting. Poster in hadr.ai Workshop, NeurIPS 2021 (Online Presentation). [poster](/files/hadrai_nips2021_poster.pdf)
 
-* Continuous Training and Deployment of Deep Learning Models. Presented in LWDA workshop 2021 (Online Presentation). [preprint](/blog/lwda2021-article/dl_continuous_deployment.pdf) | [paper](https://link.springer.com/article/10.1007/s13222-021-00386-8) | [slides (.pptx)](/files/lwda2021_presentation.pptx)
+* Continuous Training and Deployment of Deep Learning Models. Presented in LWDA workshop 2021 (Online Presentation). [preprint](/blog/lwda2021-article/dl_continuous_deployment.pdf) | [paper](https://link.springer.com/article/10.1007/s13222-021-00386-8) | [presentation](/files/lwda2021_presentation.pptx)
 
 ## Tutorials
 
-* Deep Learning for monitoring and forecasting natural hazards with earth observation data. IGARSS Tutorial (2023). ([Github repo](https://github.com/Orion-AI-Lab/igarss23_DL4NH))
+* Deep Learning for monitoring and forecasting natural hazards with earth observation data. IGARSS Tutorial (2023). [github repo](https://github.com/Orion-AI-Lab/igarss23_DL4NH)
 
 
 If you are searching for a resource with a broken link, please [drop me an email](mailto:iprapas+blog@protonmail.com)
