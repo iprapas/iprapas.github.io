@@ -64,7 +64,7 @@ googleAnalytics = "UA-93894885-1"
     name = "Google Scholar"
     icon = "fa fa-graduation-cap fa-2x"
     weight = 2
-    url = "https://github.com/iprapas/"
+    url = "https://scholar.google.com/citations?user=tEF8OxIAAAAJ"
 
 [[params.social]]
     name = "Kaggle"
