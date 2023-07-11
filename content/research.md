@@ -5,7 +5,7 @@ slug = "research"
 
 My research is on the use of Deep Learning methods for spatiotemporal earth observation 🛰️ datasets, with a particular focus on the modeling of wildfires 🔥.
 
-## Papers
+## 📜 Papers
 
 For a full updated list, please refer to my [scholar profile](https://scholar.google.com/citations?user=tEF8OxIAAAAJ). For each paper, first authors are presented in bold.
 
@@ -26,7 +26,7 @@ For a full updated list, please refer to my [scholar profile](https://scholar.go
 * *Towards human activity reasoning with computational logic and deep learning.* **Prapas, I.**, Paliouras, G., Artikis, A., & Baskiotis, N. (2018, July). In Proceedings of the 10th Hellenic Conference on Artificial Intelligence (pp. 1-4). [preprint](/files/setn_2018_preprint.pdf) | [paper](https://dl.acm.org/doi/pdf/10.1145/3200947.3201051)
 
 
-## Datasets
+## 💾 Datasets
 
 * [FireCube](https://zenodo.org/record/6475592): A Daily Datacube for the Modeling and Analysis of Wildfires in Greece.
 
@@ -35,13 +35,13 @@ For a full updated list, please refer to my [scholar profile](https://scholar.go
 * [Mesogeos](https://orion-ai-lab.github.io/mesogeos/): A multi-purpose dataset for data-driven wildfire modeling in the Mediterranean.
 
 
-## Presentations (invited talks, conferences, posters, etc)
+## 🎨 Presentations (invited talks, conferences, posters)
 
-* Wildfire danger forecasting at different spatio-temporal scales. [AI for Good 2023, ELLIS ML Workshop "The role of AI in tackling climate change and its impacts: from science to early warning"](https://aiforgood.itu.int/event/the-role-of-ai-in-tackling-climate-change-and-its-impacts-from-science-to-early-warning/), Geneva, Switzerland (Invited Talk). [slides](./)
+* Wildfire danger forecasting at different spatio-temporal scales. [AI for Good 2023, ELLIS ML Workshop "The role of AI in tackling climate change and its impacts: from science to early warning"](https://aiforgood.itu.int/event/the-role-of-ai-in-tackling-climate-change-and-its-impacts-from-science-to-early-warning/), Geneva, Switzerland (Invited Talk). [presentation](./)
 
 * Earth System Deep Learning towards a Global Digital Twin of Wildfires. EGU 2023, Vienna, Austria (Oral Presentation). [presentation](./) | [abstract](./)
 
-* Deep learning for wildfire danger forecasting at different spatio-temporal scales. ITU Webinar "Fighting wildfires with AI-powered insights" April 19th, 2023 (Invited Talk) [presentation](https://www.itu.int/en/ITU-T/webinars/20230419/Documents/2_Ioannis%20Prapas.pdf) | [recording](https://itu.zoom.us/rec/share/qD4WfX_aSp2pYGsCGFszpRs17AC1e9nzEWLv2hYg9EdKpMauinKF25z10YRh6u_K.LU3NnjFs1RgmVwMY?startTime=1681905677000)
+* Deep learning for wildfire danger forecasting at different spatio-temporal scales. ITU Webinar "Fighting wildfires with AI-powered insights" April 19th, 2023 (Invited Talk). [presentation](https://www.itu.int/en/ITU-T/webinars/20230419/Documents/2_Ioannis%20Prapas.pdf) | [recording](https://itu.zoom.us/rec/share/qD4WfX_aSp2pYGsCGFszpRs17AC1e9nzEWLv2hYg9EdKpMauinKF25z10YRh6u_K.LU3NnjFs1RgmVwMY?startTime=1681905677000)
 
 * [AI4EO ESA Φ-Lab Workshop on AI for Natural Hazard Management](https://seasfire.hua.gr/2023/05/18/seasfire-at-esa-ai4eo-workshop-on-natural-hazard-management/), ESRIN Frascatti Italy, May 10th 2023 (Co-organized by me).
 
@@ -59,7 +59,7 @@ For a full updated list, please refer to my [scholar profile](https://scholar.go
 
 * Continuous Training and Deployment of Deep Learning Models. Presented in LWDA workshop 2021 (Online Presentation. [preprint](/blog/lwda2021-article/dl_continuous_deployment.pdf) | [paper](https://link.springer.com/article/10.1007/s13222-021-00386-8) | [presentation](/files/lwda2021_presentation.pptx)
 
-## Tutorials
+## 🏛️ Tutorials
 
 * Deep Learning for monitoring and forecasting natural hazards with earth observation data. IGARSS Tutorial (2023). [github repo](https://github.com/Orion-AI-Lab/igarss23_DL4NH)
 
