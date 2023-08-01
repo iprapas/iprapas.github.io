@@ -19,9 +19,9 @@ For a full updated list, please refer to my [scholar profile](https://scholar.go
   
 * *Deep learning for global wildfire forecasting.* **Prapas, I.**, Ahuja, A., Kondylatos, S., Karasante, I., Panagiotou, E., Alonso, L., ... & Papoutsis, I. (2022). arXiv preprint arXiv:2211.00534. *Presented at Tackling Climate Change with AI workshop in NeurIPS 2022.* [html](https://arxiv.org/abs/2211.00534)
   
-* *Deep learning methods for daily wildfire danger forecasting.* **Prapas, I., Kondylatos, S.**, Papoutsis, I., Camps-Valls, G., Ronco, M., Fernández-Torres, M. Á., ... & Carvalhais, N. (2021). arXiv preprint arXiv:2111.02736. *Presented at hadr.ai workshop in NeurIPS 2021.*  [html](https://arxiv.org/abs/2111.02736)
+* *Deep learning methods for daily wildfire danger forecasting.* **Prapas, I., Kondylatos, S.**, Papoutsis, I., Camps-Valls, G., Ronco, M., Fernández-Torres, M. Á., ... & Carvalhais, N. (2021). arXiv preprint arXiv:2111.02736. *Presented at hadr.ai workshop in NeurIPS 2021.*  [html](https://arxiv.org/abs/2111.02736) | [code](https://github.com/Orion-AI-Lab/wildfire_forecasting)
   
-* *Continuous training and deployment of deep learning models.* **Prapas, I.**, Derakhshan, B., Mahdiraji, A. R., & Markl, V. (2021). Datenbank-Spektrum, 21(3), 203-212. *Presented at LWDA 2021*. [html](https://link.springer.com/article/10.1007/s13222-021-00386-8)
+* *Continuous training and deployment of deep learning models.* **Prapas, I.**, Derakhshan, B., Mahdiraji, A. R., & Markl, V. (2021). Datenbank-Spektrum, 21(3), 203-212. *Presented at LWDA 2021*. [html](https://link.springer.com/article/10.1007/s13222-021-00386-8) | [code](https://github.com/iprapas/dl-continuous-deployment)
   
 * *Towards human activity reasoning with computational logic and deep learning.* **Prapas, I.**, Paliouras, G., Artikis, A., & Baskiotis, N. (2018, July). In Proceedings of the 10th Hellenic Conference on Artificial Intelligence (pp. 1-4). [preprint](/files/setn_2018_preprint.pdf) | [paper](https://dl.acm.org/doi/pdf/10.1145/3200947.3201051)
 
@@ -37,9 +37,9 @@ For a full updated list, please refer to my [scholar profile](https://scholar.go
 
 ## 🎨 Presentations (invited talks, conferences, posters)
 
-* Wildfire danger forecasting at different spatio-temporal scales. [AI for Good 2023, ELLIS ML Workshop "The role of AI in tackling climate change and its impacts: from science to early warning"](https://aiforgood.itu.int/event/the-role-of-ai-in-tackling-climate-change-and-its-impacts-from-science-to-early-warning/), Geneva, Switzerland (Invited Talk). [presentation](./)
+* Wildfire danger forecasting at different spatio-temporal scales. [AI for Good 2023, ELLIS ML Workshop "The role of AI in tackling climate change and its impacts: from science to early warning"](https://aiforgood.itu.int/event/the-role-of-ai-in-tackling-climate-change-and-its-impacts-from-science-to-early-warning/), Geneva, Switzerland (Invited Talk). [presentation](/files/AI4GOOD_Wildfires_multiple_scales.pdf)
 
-* Earth System Deep Learning towards a Global Digital Twin of Wildfires. EGU 2023, Vienna, Austria (Oral Presentation). [presentation](./) | [abstract](./)
+* Earth System Deep Learning towards a Global Digital Twin of Wildfires. EGU 2023, Vienna, Austria (Oral Presentation). [presentation](/files/EGU_26_04_2023.pdf) | [abstract](https://meetingorganizer.copernicus.org/EGU23/EGU23-5443.html)
 
 * Deep learning for wildfire danger forecasting at different spatio-temporal scales. ITU Webinar "Fighting wildfires with AI-powered insights" April 19th, 2023 (Invited Talk). [presentation](https://www.itu.int/en/ITU-T/webinars/20230419/Documents/2_Ioannis%20Prapas.pdf) | [recording](https://itu.zoom.us/rec/share/qD4WfX_aSp2pYGsCGFszpRs17AC1e9nzEWLv2hYg9EdKpMauinKF25z10YRh6u_K.LU3NnjFs1RgmVwMY?startTime=1681905677000)
 
@@ -55,9 +55,9 @@ For a full updated list, please refer to my [scholar profile](https://scholar.go
 
 * Deep Learning Methods for Daily Wildfire Danger Forecasting. Living Planet Symposium 2022, Bonn, Germany (Poster Presentation). [poster](/files/lps2022_poster_wildfire.pdf)
 
-* Deep Learning Methods for Daily Wildfire Danger Forecasting. Poster in hadr.ai Workshop, NeurIPS 2021 (Online Presentation). [poster](/files/hadrai_nips2021_poster.pdf)
+* Deep Learning Methods for Daily Wildfire Danger Forecasting. Poster in hadr.ai Workshop, NeurIPS 2021 (Online Presentation). [poster](/files/hadrai_nips2021_poster.pdf) | [paper](https://arxiv.org/abs/2111.02736)
 
-* Continuous Training and Deployment of Deep Learning Models. Presented in LWDA workshop 2021 (Online Presentation. [preprint](/blog/lwda2021-article/dl_continuous_deployment.pdf) | [paper](https://link.springer.com/article/10.1007/s13222-021-00386-8) | [presentation](/files/lwda2021_presentation.pptx)
+* Continuous Training and Deployment of Deep Learning Models. Presented in LWDA workshop 2021 (Online Presentation). [preprint](/blog/lwda2021-article/dl_continuous_deployment.pdf) | [paper](https://link.springer.com/article/10.1007/s13222-021-00386-8) | [presentation](/files/lwda2021_presentation.pptx)
 
 ## 🏛️ Tutorials
 
