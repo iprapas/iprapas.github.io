@@ -3,13 +3,14 @@ title = "Research"
 slug = "research"
 +++
 
-My research is on the use of Deep Learning methods for spatiotemporal earth observation 🛰️ datasets, with a particular focus on the modeling of wildfires 🔥.
+My research is on the use of Deep Learning methods for spatiotemporal earth observation 🛰️ datasets, with a particular focus on the modeling of wildfires 🔥. 
+In an attempt to promote openness and reproducibility, in this page you will find links to my papers, presentations and related code. 
 
 ## 📜 Papers
 
 For a full updated list, please refer to my [scholar profile](https://scholar.google.com/citations?user=tEF8OxIAAAAJ). For each paper, first authors are presented in bold.
 
-* *TeleViT: Teleconnection-driven Transformers Improve Subseasonal to Seasonal Wildfire Forecasting.* **Prapas, I.**, Bountos, N. I., Kondylatos, S., Michail, D., Camps-Valls, G., & Papoutsis, I. (2023). arXiv preprint arXiv:2306.10940 (under review). [html](https://arxiv.org/abs/2306.10940) | [code](https://github.com/orion-ai-lab/televit)
+* *TeleViT: Teleconnection-driven Transformers Improve Subseasonal to Seasonal Wildfire Forecasting.* **Prapas, I.**, Bountos, N. I., Kondylatos, S., Michail, D., Camps-Valls, G., & Papoutsis, I. (2023). arXiv preprint arXiv:2306.10940 (Accepted at ICCV 2023 AI+HADR workshop). [html](https://arxiv.org/abs/2306.10940) | [code](https://github.com/orion-ai-lab/televit)
   
 * *Mesogeos: A multi-purpose dataset for data-driven wildfire modeling in the Mediterranean.* **Kondylatos, S.**, Prapas, I., Camps-Valls, G., & Papoutsis, I. (2023). arXiv preprint arXiv:2306.05144 (under review). [html](https://arxiv.org/abs/2306.05144) | [code](https://github.com/orion-ai-lab/mesogeos)
   
@@ -19,7 +20,7 @@ For a full updated list, please refer to my [scholar profile](https://scholar.go
   
 * *Deep learning for global wildfire forecasting.* **Prapas, I.**, Ahuja, A., Kondylatos, S., Karasante, I., Panagiotou, E., Alonso, L., ... & Papoutsis, I. (2022). arXiv preprint arXiv:2211.00534. *Presented at Tackling Climate Change with AI workshop in NeurIPS 2022.* [html](https://arxiv.org/abs/2211.00534)
   
-* *Deep learning methods for daily wildfire danger forecasting.* **Prapas, I., Kondylatos, S.**, Papoutsis, I., Camps-Valls, G., Ronco, M., Fernández-Torres, M. Á., ... & Carvalhais, N. (2021). arXiv preprint arXiv:2111.02736. *Presented at hadr.ai workshop in NeurIPS 2021.*  [html](https://arxiv.org/abs/2111.02736) | [code](https://github.com/Orion-AI-Lab/wildfire_forecasting)
+* *Deep learning methods for daily wildfire danger forecasting.* **Prapas, I., Kondylatos, S.**, Papoutsis, I., Camps-Valls, G., Ronco, M., Fernández-Torres, M. Á., ... & Carvalhais, N. (2021). arXiv preprint arXiv:2111.02736. *Presented at NeurIPS 2021 AI+HADR workshop.*  [html](https://arxiv.org/abs/2111.02736) | [code](https://github.com/Orion-AI-Lab/wildfire_forecasting)
   
 * *Continuous training and deployment of deep learning models.* **Prapas, I.**, Derakhshan, B., Mahdiraji, A. R., & Markl, V. (2021). Datenbank-Spektrum, 21(3), 203-212. *Presented at LWDA 2021*. [html](https://link.springer.com/article/10.1007/s13222-021-00386-8) | [code](https://github.com/iprapas/dl-continuous-deployment)
   
