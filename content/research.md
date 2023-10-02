@@ -12,7 +12,7 @@ For a full updated list, please refer to my [scholar profile](https://scholar.go
 
 * *TeleViT: Teleconnection-driven Transformers Improve Subseasonal to Seasonal Wildfire Forecasting.* **Prapas, I.**, Bountos, N. I., Kondylatos, S., Michail, D., Camps-Valls, G., & Papoutsis, I. (2023). arXiv preprint arXiv:2306.10940 (Accepted at ICCV 2023 AI+HADR workshop). [html](https://arxiv.org/abs/2306.10940) | [code](https://github.com/orion-ai-lab/televit)
   
-* *Mesogeos: A multi-purpose dataset for data-driven wildfire modeling in the Mediterranean.* **Kondylatos, S.**, Prapas, I., Camps-Valls, G., & Papoutsis, I. (2023). arXiv preprint arXiv:2306.05144 (under review). [html](https://arxiv.org/abs/2306.05144) | [code](https://github.com/orion-ai-lab/mesogeos)
+* *Mesogeos: A multi-purpose dataset for data-driven wildfire modeling in the Mediterranean.* **Kondylatos, S.**, Prapas, I., Camps-Valls, G., & Papoutsis, I. (2023). arXiv preprint arXiv:2306.05144  (Accepted at NeurIPS 2023 Datasets and Benchmarks Track). [html](https://arxiv.org/abs/2306.05144) | [code](https://github.com/orion-ai-lab/mesogeos)
   
 * *Wildfire danger prediction and understanding with Deep Learning.* **Kondylatos, S., Prapas, I.**, Ronco, M., Papoutsis, I., Camps-Valls, G., Piles, M., ... & Carvalhais, N. (2022). Geophysical Research Letters, 49(17), e2022GL099368. [html](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2022GL099368) | [code](https://github.com/Orion-AI-Lab/wildfire_forecasting)
   
@@ -37,6 +37,8 @@ For a full updated list, please refer to my [scholar profile](https://scholar.go
 
 
 ## 🎨 Presentations (invited talks, conferences, posters)
+
+* TeleViT: Teleconnection-driven Transformers Improve Subseasonal to Seasonal Wildfire Forecasting. [AI+HADR, ICCV 2023](https://www.hadr.ai/iccv23/iccv-schedule-2023), Paris, France (Spotlight Talk). [paper](https://arxiv.org/abs/2306.10940) | [poster](/files/ICCV_HADRAI_POSTER_FINAL.pdf)
 
 * Wildfire danger forecasting at different spatio-temporal scales. [AI for Good 2023, ELLIS ML Workshop "The role of AI in tackling climate change and its impacts: from science to early warning"](https://aiforgood.itu.int/event/the-role-of-ai-in-tackling-climate-change-and-its-impacts-from-science-to-early-warning/), Geneva, Switzerland (Invited Talk). [presentation](/files/AI4GOOD_Wildfires_multiple_scales.pdf)
 
