@@ -1,5 +1,5 @@
 +++
-date = "2023-04-01"
+date = "2023-10-01"
 draft = false
 title = "Spotlight talk: Teleconnection-driven Transformers for Long-Term Forecasting(AI+HADR, ICCV 2023)"
 toc = true
