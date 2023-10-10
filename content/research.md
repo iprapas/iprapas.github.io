@@ -10,7 +10,7 @@ In an attempt to promote openness and reproducibility, in this page you will fin
 
 For a full updated list, please refer to my [scholar profile](https://scholar.google.com/citations?user=tEF8OxIAAAAJ). For each paper, first authors are presented in bold.
 
-* *TeleViT: Teleconnection-driven Transformers Improve Subseasonal to Seasonal Wildfire Forecasting.* **Prapas, I.**, Bountos, N. I., Kondylatos, S., Michail, D., Camps-Valls, G., & Papoutsis, I. (2023). arXiv preprint arXiv:2306.10940 (Accepted at ICCV 2023 AI+HADR workshop). [html](https://arxiv.org/abs/2306.10940) | [code](https://github.com/orion-ai-lab/televit)
+* *TeleViT: Teleconnection-driven Transformers Improve Subseasonal to Seasonal Wildfire Forecasting.* **Prapas, I.**, Bountos, N. I., Kondylatos, S., Michail, D., Camps-Valls, G., & Papoutsis, I. (2023).  In Proceedings of the IEEE/CVF International Conference on Computer Vision (pp. 3754-3759). (ICCV 2023, AI+HADR workshop, Best Paper Award 🥇). [paper](https://openaccess.thecvf.com/content/ICCV2023W/AIHADR/html/Prapas_TeleViT_Teleconnection-Driven_Transformers_Improve_Subseasonal_to_Seasonal_Wildfire_Forecasting_ICCVW_2023_paper.html) | [code](https://github.com/orion-ai-lab/televit)
   
 * *Mesogeos: A multi-purpose dataset for data-driven wildfire modeling in the Mediterranean.* **Kondylatos, S.**, Prapas, I., Camps-Valls, G., & Papoutsis, I. (2023). arXiv preprint arXiv:2306.05144  (Accepted at NeurIPS 2023 Datasets and Benchmarks Track). [html](https://arxiv.org/abs/2306.05144) | [code](https://github.com/orion-ai-lab/mesogeos)
   
@@ -38,7 +38,7 @@ For a full updated list, please refer to my [scholar profile](https://scholar.go
 
 ## 🎨 Presentations (invited talks, conferences, posters)
 
-* TeleViT: Teleconnection-driven Transformers Improve Subseasonal to Seasonal Wildfire Forecasting. [AI+HADR, ICCV 2023](https://www.hadr.ai/iccv23/iccv-schedule-2023), Paris, France (Spotlight Talk, Best Paper Award 🥇). [paper](https://arxiv.org/abs/2306.10940) | [poster](/files/ICCV_HADRAI_POSTER_FINAL.pdf)
+* TeleViT: Teleconnection-driven Transformers Improve Subseasonal to Seasonal Wildfire Forecasting. [AI+HADR, ICCV 2023](https://www.hadr.ai/iccv23/iccv-schedule-2023), Paris, France (Spotlight Talk, Best Paper Award 🥇). [paper](https://openaccess.thecvf.com/content/ICCV2023W/AIHADR/html/Prapas_TeleViT_Teleconnection-Driven_Transformers_Improve_Subseasonal_to_Seasonal_Wildfire_Forecasting_ICCVW_2023_paper.html) | [poster](/files/ICCV_HADRAI_POSTER_FINAL.pdf)
 
 * Wildfire danger forecasting at different spatio-temporal scales. [AI for Good 2023, ELLIS ML Workshop "The role of AI in tackling climate change and its impacts: from science to early warning"](https://aiforgood.itu.int/event/the-role-of-ai-in-tackling-climate-change-and-its-impacts-from-science-to-early-warning/), Geneva, Switzerland (Invited Talk). [presentation](/files/AI4GOOD_Wildfires_multiple_scales.pdf)
 
@@ -46,7 +46,7 @@ For a full updated list, please refer to my [scholar profile](https://scholar.go
 
 * Deep learning for wildfire danger forecasting at different spatio-temporal scales. ITU Webinar "Fighting wildfires with AI-powered insights" April 19th, 2023 (Invited Talk). [presentation](https://www.itu.int/en/ITU-T/webinars/20230419/Documents/2_Ioannis%20Prapas.pdf) | [recording](https://itu.zoom.us/rec/share/qD4WfX_aSp2pYGsCGFszpRs17AC1e9nzEWLv2hYg9EdKpMauinKF25z10YRh6u_K.LU3NnjFs1RgmVwMY?startTime=1681905677000)
 
-* [AI4EO ESA Φ-Lab Workshop on AI for Natural Hazard Management](https://seasfire.hua.gr/2023/05/18/seasfire-at-esa-ai4eo-workshop-on-natural-hazard-management/), ESRIN Frascatti Italy, May 10th 2023 (Co-organized by me).
+* [AI4EO ESA Φ-Lab Workshop on AI for Natural Hazard Management](https://seasfire.hua.gr/2023/05/18/seasfire-at-esa-ai4eo-workshop-on-natural-hazard-management/), ESRIN Frascatti Italy, May 10th 2023 (Co-organized).
 
 	* Deep Learning for Landslide Detection (Oral Presentation). [presentation](https://drive.google.com/file/d/1H82hzvUIAjQF0QF6NFJpXcJaj7fYqS9V/view?usp=sharing)
 	
