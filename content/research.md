@@ -38,7 +38,7 @@ For a full updated list, please refer to my [scholar profile](https://scholar.go
 
 ## 🎨 Presentations (invited talks, conferences, posters)
 
-* TeleViT: Teleconnection-driven Transformers Improve Subseasonal to Seasonal Wildfire Forecasting. [AI+HADR, ICCV 2023](https://www.hadr.ai/iccv23/iccv-schedule-2023), Paris, France (Spotlight Talk). [paper](https://arxiv.org/abs/2306.10940) | [poster](/files/ICCV_HADRAI_POSTER_FINAL.pdf)
+* TeleViT: Teleconnection-driven Transformers Improve Subseasonal to Seasonal Wildfire Forecasting. [AI+HADR, ICCV 2023](https://www.hadr.ai/iccv23/iccv-schedule-2023), Paris, France (Spotlight Talk, Best Paper Award 🥇). [paper](https://arxiv.org/abs/2306.10940) | [poster](/files/ICCV_HADRAI_POSTER_FINAL.pdf)
 
 * Wildfire danger forecasting at different spatio-temporal scales. [AI for Good 2023, ELLIS ML Workshop "The role of AI in tackling climate change and its impacts: from science to early warning"](https://aiforgood.itu.int/event/the-role-of-ai-in-tackling-climate-change-and-its-impacts-from-science-to-early-warning/), Geneva, Switzerland (Invited Talk). [presentation](/files/AI4GOOD_Wildfires_multiple_scales.pdf)
 
